@@ -31,6 +31,7 @@ struct Position {
 #include <OpenAL/alc.h>
 #include <cstdlib>
 #include <ctime>
+#include "SOIL.h"
 
 // Local Headers
 #include "player.h"
@@ -41,6 +42,8 @@ struct Position {
 #include "UI.h"
 #include "shadowMapping.h"
 #include "soundEffects.h"
+#include "sprite.h"
+
 
 
 #endif

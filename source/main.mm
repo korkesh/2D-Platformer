@@ -32,7 +32,7 @@ void display (void) {
     
     // Adjust Camera
     camera();
-    
+            
     // Render Scene
     glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_QUADS);

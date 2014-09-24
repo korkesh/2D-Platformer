@@ -24,6 +24,24 @@ Player::Player(void) {
     isJumping = false;
 }
 
+void Player::initializeSprite() {
+    GLuint tex_2d = SOIL_load_OGL_texture
+	(
+     "/Users/Korkesh/Desktop/mario.png",
+     SOIL_LOAD_AUTO,
+     SOIL_CREATE_NEW_ID,
+     SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
+     );
+    
+    playerSprite = Sprite();
+    playerSprite.initializeSprite(tex_2d, 0, 0, width, height);
+    
+    if( 0 == tex_2d )
+    {
+        printf( "SOIL loading error: '%s'\n", SOIL_last_result() );
+    }
+}
+
 Player::~Player(void) {
     
 }
@@ -75,32 +93,15 @@ void Player::updatePosition(void) {
 }
 
 void Player::renderPlayer(void) {
-    
     glEnable(GL_TEXTURE_2D);
 	glEnable (GL_BLEND);
 	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
-	GLuint tex_2d = SOIL_load_OGL_texture
-	(
-     "/Users/Korkesh/Downloads/mario.bmp",
-     SOIL_LOAD_AUTO,
-     SOIL_CREATE_NEW_ID,
-     SOIL_FLAG_POWER_OF_TWO | SOIL_FLAG_COMPRESS_TO_DXT | SOIL_FLAG_MULTIPLY_ALPHA
-     );
-    
-	Sprite snowman = Sprite(tex_2d, 0, 0, width, height);
-    
-	if(tex_2d == 0)
-	{
-        std::cout << SOIL_last_result();
-        return false;
-	}
-	
-	glBindTexture(GL_TEXTURE_2D, tex_2d);
+    glBindTexture(GL_TEXTURE_2D, playerSprite.getID());
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
     
-    /*glColor3f(1.0f, 1.0f, 1.0f);
+    glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_QUADS);
         glTexCoord2f(1.0f, 0.0f);
         glVertex2f(playerPosition.posX - (width / 2), playerPosition.posY + (height / 2));
@@ -113,10 +114,8 @@ void Player::renderPlayer(void) {
     
         glTexCoord2f(0.0f, 0.0f);
         glVertex2f(playerPosition.posX + (width / 2), playerPosition.posY + (height / 2));
-    glEnd();*/
-    
-    snowman.draw(playerPosition.posX - (width / 2), playerPosition.posY - (height / 2));
-    
+    glEnd();
+        
     glDisable(GL_TEXTURE_2D);
 
 }

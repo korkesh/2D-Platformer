@@ -34,7 +34,6 @@ struct Position {
 #include "SOIL.h"
 
 // Local Headers
-#include "player.h"
 #include "generateWorld.h"
 #include "texture.h"
 #include "algebra.hpp"
@@ -42,7 +41,6 @@ struct Position {
 #include "UI.h"
 #include "shadowMapping.h"
 #include "soundEffects.h"
-#include "sprite.h"
 
 
 

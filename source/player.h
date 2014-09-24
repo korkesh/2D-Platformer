@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "sharedHeaders.h"
+#include "sprite.h"
 
 enum Player_State {IDLE, DEAD, UP, DOWN, LEFT, RIGHT};
 
@@ -29,6 +30,9 @@ class Player {
     // State
     Player_State playerState;
     bool isJumping;
+    
+    // Sprite
+    Sprite playerSprite;
     
 public:
     // Constructor/Destructor
@@ -57,6 +61,7 @@ public:
     void setIsJumping(bool b) { isJumping = b; }
     bool getIsJumping(void) { return isJumping; }
 
+    void initializeSprite();
     
     //Position
     void updatePosition(void);

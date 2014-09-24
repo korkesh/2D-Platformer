@@ -1,5 +1,5 @@
 #include "sharedHeaders.h"
-
+#include "player.h"
 #pragma mark Globals
 
 Player player;
@@ -149,11 +149,12 @@ void enable (void) {
 void init (void) {
     enable(); // Enable OpenGL Parameters
     player = Player();
+    player.initializeSprite();
     sound(xpos, zpos);
     textures();
 //    SetupWorld(); // TODO: Used to load levels
     
-    glClearColor(0.0, 0.0, 0.0, 1.0); /* BLACK */
+    glClearColor(0.2, 0.2, 0.6, 1.0); /* Mario Blue */
  	glViewport(0, 0, WIDTH, HEIGHT);
     
  	glMatrixMode(GL_PROJECTION);

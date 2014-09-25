@@ -44,6 +44,7 @@ public:
     Position getPoition(void) { return playerPosition; }
     void setVelY(float s) { playerPosition.velY = s; }
     float getVelY(void) { return playerPosition.velY; }
+    float getVelX(void) { return playerPosition.velX; }
     
     void setSize(float w, float h) { width = w; height = h; }
     float getWidth(void) { return width; }
@@ -64,7 +65,7 @@ public:
     void initializeSprite();
     
     //Position
-    void updatePosition(void);
+    void updatePosition(float maxWidth, float maxHeight);
     
     
     // Render

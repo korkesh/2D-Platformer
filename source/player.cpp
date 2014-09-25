@@ -46,7 +46,7 @@ Player::~Player(void) {
     
 }
 
-void Player::updatePosition(void) {
+void Player::updatePosition(float maxWidth, float maxHeight) {
     
     switch (playerState) {
         /*case UP:
@@ -72,20 +72,20 @@ void Player::updatePosition(void) {
     }
     
     //TODO: Magic Number Floor Boundry
-    if (playerPosition.posY - (height / 2) > HEIGHT - 170) {
-        playerPosition.posY = HEIGHT - 165;
+    if (playerPosition.posY + (height / 2) > maxHeight) {
+        playerPosition.posY = maxHeight;
         isJumping = false;
     }
 
     // Check Screen Boundries
-    if (playerPosition.posX + (width / 2) > WIDTH) {
-        playerPosition.posX = WIDTH - (width / 2);
+    if (playerPosition.posX + (width / 2) > maxWidth) {
+        playerPosition.posX = maxWidth - (width / 2);
     }
     if (playerPosition.posX - (width / 2) < 0) {
         playerPosition.posX = 0 + (width / 2);
     }
-    if (playerPosition.posY + (height / 2) > HEIGHT) {
-        playerPosition.posY = HEIGHT - (height / 2);
+    if (playerPosition.posY + (height / 2) > maxHeight) {
+        playerPosition.posY = maxHeight - (height / 2);
     }
     if (playerPosition.posY - (height / 2) < 0) {
         playerPosition.posY = 0 + (height / 2);

@@ -1,8 +1,11 @@
 #include "sharedHeaders.h"
 #include "player.h"
+#include "level.h"
+
 #pragma mark Globals
 
 Player player;
+Level level;
 
 float prevXpos = 0, prevYpos = 1.5, prevZpos = 15;
 float lastx = WIDTH/2, lasty = HEIGHT/2;
@@ -17,7 +20,12 @@ float xpos = 0.0f, ypos = 0.0, zpos = 0.0;
 // Purpose: Update Camera Position
 //====================================================
 void camera (void) {
-    //glTranslatef(-xpos, -ypos, -zpos);
+    float playerOffset = player.getPoition().posX;
+    
+    if (playerOffset < level.getLevelWidth() - (WIDTH / 2) && playerOffset > WIDTH / 2) {
+        glTranslatef(-playerOffset + (WIDTH/2), 0.0f, 0.0f);
+    }
+    
 }
 
 
@@ -32,19 +40,22 @@ void display (void) {
     
     // Adjust Camera
     camera();
-            
+
     // Render Scene
+    level.renderLevel();
+    glClear(GL_DEPTH_BUFFER_BIT);
+
     glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_QUADS);
         glVertex2f(0, HEIGHT - 149.0f);
         glVertex2f(0, HEIGHT - 150.0f);
-        glVertex2f(WIDTH, HEIGHT - 150.0f);
-        glVertex2f(WIDTH, HEIGHT - 149.0f);
+        glVertex2f(WIDTH*3, HEIGHT - 150.0f);
+        glVertex2f(WIDTH*3, HEIGHT - 149.0f);
     glEnd();
     
     // Render Player
     player.renderPlayer();
-    
+
     glutSwapBuffers(); //swap the buffers
 }
 
@@ -55,7 +66,7 @@ void display (void) {
 //====================================================
 void update (int t) {
     
-    player.updatePosition();
+    player.updatePosition(level.getLevelWidth(), level.getLevelHeight());
     
 	glutPostRedisplay();
 	glutTimerFunc(FPS, update, 0);
@@ -148,6 +159,8 @@ void enable (void) {
 //====================================================
 void init (void) {
     enable(); // Enable OpenGL Parameters
+    level = Level(0, 0, WIDTH * 3, HEIGHT - 150.0f);
+    level.setLevelSprite(WIDTH, HEIGHT - 150.0f);
     player = Player();
     player.initializeSprite();
     sound(xpos, zpos);

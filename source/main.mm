@@ -20,7 +20,7 @@ float xpos = 0.0f, ypos = 0.0, zpos = 0.0;
 // Purpose: Update Camera Position
 //====================================================
 void camera (void) {
-    float playerOffset = player.getPoition().posX;
+    float playerOffset = player.getPosition().posX;
     
     if (playerOffset < level.getLevelWidth() - (WIDTH / 2) && playerOffset > WIDTH / 2) {
         glTranslatef(-playerOffset + (WIDTH/2), 0.0f, 0.0f);
@@ -163,6 +163,7 @@ void init (void) {
     level.setLevelSprite(WIDTH, HEIGHT - 150.0f);
     player = Player();
     player.initializeSprite();
+    player.setPosition(player.getPosition().posX, level.getLevelHeight());
     sound(xpos, zpos);
     textures();
 //    SetupWorld(); // TODO: Used to load levels

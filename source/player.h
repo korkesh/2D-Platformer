@@ -30,9 +30,11 @@ class Player {
     // State
     Player_State playerState;
     bool isJumping;
+    bool toggleRun;
     
     // Sprite
-    Sprite playerSprite;
+    Sprite playerSpriteIdle;
+    Sprite playerSpriteRun;
     
 public:
     // Constructor/Destructor
@@ -41,7 +43,7 @@ public:
     
     // Setters/Getters
     void setPosition(float x, float y) { playerPosition.posX = x; playerPosition.posY = y; }
-    Position getPoition(void) { return playerPosition; }
+    Position getPosition(void) { return playerPosition; }
     void setVelY(float s) { playerPosition.velY = s; }
     float getVelY(void) { return playerPosition.velY; }
     float getVelX(void) { return playerPosition.velX; }

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F07093B19CA181700B4D365 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F07093919CA181700B4D365 /* player.cpp */; };
-		2FCAC08F19D269D5001B2CDA /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAC08E19D269D5001B2CDA /* libSOIL.a */; };
+		2F0EEE9519D6677B00C49A1D /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0EEE9419D6677B00C49A1D /* libSOIL.a */; };
 		2FCAC09219D26A9E001B2CDA /* sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAC09019D26A9E001B2CDA /* sprite.cpp */; };
 		2FCAC09719D270D8001B2CDA /* SOIL.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAC09319D270D8001B2CDA /* SOIL.c */; };
 		2FCAC09819D270D8001B2CDA /* stb_image_aug.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAC09419D270D8001B2CDA /* stb_image_aug.c */; };
@@ -34,7 +34,7 @@
 		2F07093819C966FD00B4D365 /* sharedHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = sharedHeaders.h; path = source/sharedHeaders.h; sourceTree = SOURCE_ROOT; };
 		2F07093919CA181700B4D365 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = player.cpp; path = source/player.cpp; sourceTree = SOURCE_ROOT; };
 		2F07093A19CA181700B4D365 /* player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = player.h; path = source/player.h; sourceTree = SOURCE_ROOT; };
-		2FCAC08E19D269D5001B2CDA /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = "../Downloads/Simple OpenGL Image Library/lib/libSOIL.a"; sourceTree = "<group>"; };
+		2F0EEE9419D6677B00C49A1D /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = "../Downloads/Simple OpenGL Image Library/lib/libSOIL.a"; sourceTree = "<group>"; };
 		2FCAC09019D26A9E001B2CDA /* sprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sprite.cpp; path = source/sprite.cpp; sourceTree = SOURCE_ROOT; };
 		2FCAC09119D26A9E001B2CDA /* sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sprite.h; path = source/sprite.h; sourceTree = SOURCE_ROOT; };
 		2FCAC09319D270D8001B2CDA /* SOIL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SOIL.c; path = "../Downloads/Simple OpenGL Image Library/src/SOIL.c"; sourceTree = "<group>"; };
@@ -73,9 +73,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FCAC08F19D269D5001B2CDA /* libSOIL.a in Frameworks */,
 				2FCD3B4419787C61001B744F /* OpenAL.framework in Frameworks */,
 				2FCD3B4219787C5C001B744F /* GLUT.framework in Frameworks */,
+				2F0EEE9519D6677B00C49A1D /* libSOIL.a in Frameworks */,
 				E2639AE8190D169200B6251A /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,11 +117,11 @@
 		E263994F190D148400B6251A /* thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				2F0EEE9419D6677B00C49A1D /* libSOIL.a */,
 				2FCAC09319D270D8001B2CDA /* SOIL.c */,
 				2FCAC09419D270D8001B2CDA /* stb_image_aug.c */,
 				2FCAC09519D270D8001B2CDA /* image_DXT.c */,
 				2FCAC09619D270D8001B2CDA /* image_helper.c */,
-				2FCAC08E19D269D5001B2CDA /* libSOIL.a */,
 				2FCD3B4319787C61001B744F /* OpenAL.framework */,
 				2FCD3B4119787C5C001B744F /* GLUT.framework */,
 				E2639AF2190D16D900B6251A /* glew.c */,
@@ -289,6 +289,10 @@
 					OpenGL,
 					Image,
 					Library/lib,
+					/Users/Korkesh/Downloads/Simple,
+					OpenGL,
+					Image,
+					Library/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = 01_project_skeleton;
@@ -304,6 +308,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/Korkesh/Downloads/Simple,
+					OpenGL,
+					Image,
+					Library/lib,
 					/Users/Korkesh/Downloads/Simple,
 					OpenGL,
 					Image,

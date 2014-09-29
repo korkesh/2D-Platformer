@@ -34,7 +34,15 @@ class Player {
     
     // Sprite
     Sprite playerSpriteIdle;
-    Sprite playerSpriteRun;
+    Sprite playerSpriteIdleRight;
+    Sprite playerSpriteRunRight;
+    Sprite playerSpriteIdleLeft;
+    Sprite playerSpriteRunLeft;
+    Sprite playerSpriteJumpLeft;
+    Sprite playerSpriteJumpRight;
+    
+    // Animation
+    float elapsedTime;
     
 public:
     // Constructor/Destructor
@@ -69,10 +77,11 @@ public:
     //Position
     void updatePosition(float maxWidth, float maxHeight);
     
-    
     // Render
     void renderPlayer(void);
     
+    // Animation
+    void updatePlayerAnimation(float time);
 };
 
 #endif /* defined(__opengl_series__player__) */

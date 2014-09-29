@@ -22,7 +22,7 @@ float xpos = 0.0f, ypos = 0.0, zpos = 0.0;
 void camera (void) {
     float playerOffset = player.getPosition().posX;
     
-    if (playerOffset < level.getLevelWidth() - (WIDTH / 2) && playerOffset > WIDTH / 2) {
+    if (/*playerOffset < level.getLevelWidth() - (WIDTH / 2) &&*/ playerOffset > WIDTH / 2) {
         glTranslatef(-playerOffset + (WIDTH/2), 0.0f, 0.0f);
     }
     
@@ -43,15 +43,6 @@ void display (void) {
 
     // Render Scene
     level.renderLevel();
-    glClear(GL_DEPTH_BUFFER_BIT);
-
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glBegin(GL_QUADS);
-        glVertex2f(0, HEIGHT - 149.0f);
-        glVertex2f(0, HEIGHT - 150.0f);
-        glVertex2f(WIDTH*3, HEIGHT - 150.0f);
-        glVertex2f(WIDTH*3, HEIGHT - 149.0f);
-    glEnd();
     
     // Render Player
     player.renderPlayer();
@@ -67,6 +58,7 @@ void display (void) {
 void update (int t) {
     
     player.updatePosition(level.getLevelWidth(), level.getLevelHeight());
+    player.updatePlayerAnimation(FPS / 1000.0f);
     
 	glutPostRedisplay();
 	glutTimerFunc(FPS, update, 0);
@@ -105,7 +97,11 @@ void keyboard (unsigned char key, int x, int y) {
     
     if (key == KEY_SPACE)
     {
-        
+        if (!player.getIsJumping()) {
+            player.setIsJumping(true);
+            player.setVelY(12.0f);
+        }
+
     }
     
     if (key == KEY_ESC)

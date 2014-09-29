@@ -23,6 +23,8 @@ class Level {
     bool collision;
     
     Sprite levelSprite;
+    Sprite levelSpriteGroundTop;
+    Sprite levelSpriteGroundBottom;
     
 public:
     Level(float x = 0, float y = 0, float w = 0, float h = 0, bool c = false);

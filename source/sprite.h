@@ -25,7 +25,9 @@ public:
     ~Sprite();
     
     GLuint getID() { return textureID; }
-    
+    int getWidth() { return width; }
+    int getHeight() { return height; }
+
     void initializeSprite(GLuint textureID, int x, int y, int w, int h);
     
 };

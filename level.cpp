@@ -38,6 +38,38 @@ void Level::setLevelSprite(float w, float h) {
     {
         printf( "SOIL loading error: '%s'\n", SOIL_last_result() );
     }
+    
+    tex_2d = SOIL_load_OGL_texture
+	(
+     "/Users/Korkesh/2D-Platformer/resources/grass.png",
+     SOIL_LOAD_AUTO,
+     SOIL_CREATE_NEW_ID,
+     SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
+     );
+    
+    levelSpriteGroundTop = Sprite();
+    levelSpriteGroundTop.initializeSprite(tex_2d, 0, 0, 68, 9);
+    
+    if( 0 == tex_2d )
+    {
+        printf( "SOIL loading error: '%s'\n", SOIL_last_result() );
+    }
+    
+    tex_2d = SOIL_load_OGL_texture
+	(
+     "/Users/Korkesh/2D-Platformer/resources/ground.png",
+     SOIL_LOAD_AUTO,
+     SOIL_CREATE_NEW_ID,
+     SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
+     );
+    
+    levelSpriteGroundBottom = Sprite();
+    levelSpriteGroundBottom.initializeSprite(tex_2d, 0, 0, 68, 15);
+    
+    if( 0 == tex_2d )
+    {
+        printf( "SOIL loading error: '%s'\n", SOIL_last_result() );
+    }
 }
 
 void Level::renderLevel() {
@@ -46,6 +78,7 @@ void Level::renderLevel() {
 	glEnable (GL_BLEND);
 	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
+    // Background
     glBindTexture(GL_TEXTURE_2D, levelSprite.getID());
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -67,7 +100,51 @@ void Level::renderLevel() {
     glVertex2f(width, 0.0f);
     glEnd();
     
+    // Grass
+    glBindTexture(GL_TEXTURE_2D, levelSpriteGroundTop.getID());
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glBegin(GL_QUADS);
+    glTexCoord2f(0.0f, 1.0f);
+    glVertex2f(0, height);
+    
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex2f(0, height + 10.0f);
+    
+    glTexCoord2f(width / levelSpriteGroundTop.getWidth(), 0.0f);
+    glVertex2f(width, height + 10.0f);
+    
+    glTexCoord2f(width / levelSpriteGroundTop.getWidth(), 1.0f);
+    glVertex2f(width, height);
+    glEnd();
+    
+    // Ground
+    glBindTexture(GL_TEXTURE_2D, levelSpriteGroundBottom.getID());
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glBegin(GL_QUADS);
+    glTexCoord2f(0.0f, 300.0f);
+    glVertex2f(0, height + 10.0f);
+    
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex2f(0, height + 300.0f);
+    
+    glTexCoord2f(width / levelSpriteGroundTop.getWidth(), 0.0f);
+    glVertex2f(width, height + 300.0f);
+    
+    glTexCoord2f(width / levelSpriteGroundTop.getWidth(), 300.0f);
+    glVertex2f(width, height + 10.0f);
+    glEnd();
+    
     glDisable(GL_TEXTURE_2D);
-
+    glClear(GL_DEPTH_BUFFER_BIT);
     
 }

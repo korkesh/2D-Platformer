@@ -12,6 +12,7 @@
 #include <iostream>
 #include "sharedHeaders.h"
 #include "sprite.h"
+#include "object.h"
 
 class Level {
     float posX;
@@ -25,6 +26,8 @@ class Level {
     Sprite levelSprite;
     Sprite levelSpriteGroundTop;
     Sprite levelSpriteGroundBottom;
+    
+    Object test;
     
 public:
     Level(float x = 0, float y = 0, float w = 0, float h = 0, bool c = false);

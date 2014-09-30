@@ -9,6 +9,8 @@
 #include "level.h"
 
 Level::Level(float x, float y, float w, float h, bool c) {
+    test = Object();
+    
     posX = x;
     posY = y;
     
@@ -16,6 +18,7 @@ Level::Level(float x, float y, float w, float h, bool c) {
     height = h;
     
     collision = c;
+    
 }
 
 Level::~Level() {
@@ -70,6 +73,8 @@ void Level::setLevelSprite(float w, float h) {
     {
         printf( "SOIL loading error: '%s'\n", SOIL_last_result() );
     }
+    
+    test.setObjectSprite(16, 16, "/Users/Korkesh/2D-Platformer/resources/qBlock.png");
 }
 
 void Level::renderLevel() {
@@ -146,5 +151,7 @@ void Level::renderLevel() {
     
     glDisable(GL_TEXTURE_2D);
     glClear(GL_DEPTH_BUFFER_BIT);
+    
+    test.renderObject();
     
 }

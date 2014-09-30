@@ -14,8 +14,8 @@ Player::Player(void) {
     playerPosition.velX = 7.0f;
     playerPosition.velY = 0.0f;
     
-    width = 28.0f;
-    height = 40.0f;;
+    width = 28.0f / 1.5;
+    height = 40.0f / 1.5;
     
     lives = 5;
     gravity = -0.5f;

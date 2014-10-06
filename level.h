@@ -38,7 +38,9 @@ public:
     
     void setLevelSprite(float w, float h);
     
-    void renderLevel();
+    Object getObjectList(void) { return test; }
+    
+    void renderLevel(void);
 };
 
 #endif /* defined(__opengl_series__level__) */

@@ -12,6 +12,7 @@
 #include <iostream>
 #include "sharedHeaders.h"
 #include "sprite.h"
+#include "object.h"
 
 enum Player_State {IDLE, DEAD, UP, DOWN, LEFT, RIGHT};
 
@@ -75,7 +76,7 @@ public:
     void initializeSprite();
     
     //Position
-    void updatePosition(float maxWidth, float maxHeight);
+    void updatePosition(float maxWidth, float maxHeight, Object test);
     
     // Render
     void renderPlayer(void);

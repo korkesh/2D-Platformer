@@ -57,7 +57,7 @@ void display (void) {
 //====================================================
 void update (int t) {
     
-    player.updatePosition(level.getLevelWidth(), level.getLevelHeight());
+    player.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjectList());
     player.updatePlayerAnimation(FPS / 1000.0f);
     
 	glutPostRedisplay();
@@ -170,6 +170,7 @@ void init (void) {
  	glMatrixMode(GL_PROJECTION);
  	glLoadIdentity();
     glOrtho(0, WIDTH, HEIGHT, 0, 0, 1);
+
 }
 
 

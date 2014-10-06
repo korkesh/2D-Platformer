@@ -60,16 +60,16 @@ void Object::renderObject(void) {
     glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_QUADS);
     glTexCoord2f(0.0f, 1.0f);
-    glVertex2f(objectPosition.posX, objectPosition.posY);
+    glVertex2f(objectPosition.posX - (objectWidth / 2), objectPosition.posY - (objectHeight / 2));
     
     glTexCoord2f(0.0f, 0.0f);
-    glVertex2f(objectPosition.posX, objectPosition.posY + objectHeight);
+    glVertex2f(objectPosition.posX - (objectWidth / 2), objectPosition.posY + (objectHeight / 2));
     
     glTexCoord2f(1.0f, 0.0f);
-    glVertex2f(objectPosition.posX + objectWidth, objectPosition.posY + objectHeight);
+    glVertex2f(objectPosition.posX + (objectWidth / 2), objectPosition.posY + (objectHeight / 2));
     
     glTexCoord2f(1.0f, 1.0f);
-    glVertex2f(objectPosition.posX + objectWidth, objectPosition.posY);
+    glVertex2f(objectPosition.posX + (objectWidth / 2), objectPosition.posY - (objectHeight / 2));
     glEnd();
     
     glDisable(GL_TEXTURE_2D);
@@ -77,9 +77,43 @@ void Object::renderObject(void) {
 
 }
 
-bool Object::collideObject(float x, float y, float width, float height) {
+bool Object::collideObject(Position playerPosition, float playerWidth, float playerHeight) {
+    float leftA, leftB;
+    float rightA, rightB;
+    float topA, topB;
+    float bottomA, bottomB;
+    
+    leftA = objectPosition.posX - (objectWidth / 2);
+    rightA = objectPosition.posX + (objectWidth / 2);
+    topA = objectPosition.posY - (objectHeight / 2);
+    bottomA = objectPosition.posY + (objectHeight / 2);
+    
+    leftB = playerPosition.posX - (playerWidth / 2);
+    rightB = playerPosition.posX + (playerWidth / 2);
+    topB = playerPosition.posY - (playerHeight / 2);
+    bottomB = playerPosition.posY + (playerHeight / 2);
     
     
+    if( bottomA < topB )
+    {
+        return false;
+    }
     
-    return false;
+    if( topA > bottomB )
+    {
+        return false;
+    }
+    
+    if( rightA < leftB )
+    {
+        return false;
+    }
+    
+    if( leftA > rightB )
+    {
+        return false;
+    }
+    
+    
+    return true;
 }

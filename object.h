@@ -49,7 +49,7 @@ public:
 
     // Functions
     void renderObject(void);
-    bool collideObject(float x, float y, float width, float height);
+    bool collideObject(Position playerPosition, float playerWidth, float playerHeight);
     
 };
 

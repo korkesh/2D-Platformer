@@ -144,15 +144,11 @@ Player::~Player(void) {
     
 }
 
-void Player::updatePosition(float maxWidth, float maxHeight) {
+void Player::updatePosition(float maxWidth, float maxHeight, Object test) {
+    
+    Position previousPosition = playerPosition;
     
     switch (playerState) {
-        /*case UP:
-            playerPosition.posY -= playerPosition.velY;
-            break;
-        case DOWN:
-            playerPosition.posY += playerPosition.velY;
-            break;*/
         case LEFT:
             playerPosition.posX -= playerPosition.velX;
             break;
@@ -169,12 +165,34 @@ void Player::updatePosition(float maxWidth, float maxHeight) {
         playerPosition.velY += gravity;
     }
     
+    // Test for collision
+    if (test.collideObject(playerPosition, width / 2, height-1.0f)) {
+        if (isJumping && playerPosition.velY >= 0) {
+            playerPosition = previousPosition;
+            playerPosition.velY = 0;
+        } else if (isJumping && playerPosition.velY < 0) {
+            playerPosition = previousPosition;
+            playerPosition.velY = 0;
+            isJumping = false;
+        } else {
+            playerPosition = previousPosition;
+        }
+    } else if (!isJumping && playerPosition.posY + (height / 2) <= maxHeight) {
+        playerPosition.posY -= playerPosition.velY;
+        playerPosition.velY += gravity;
+        
+        if (test.collideObject(playerPosition, width / 2, height-1.0f)) {
+            playerPosition.posY = previousPosition.posY;
+            playerPosition.velY = 0;
+        }
+    }
+    
     //TODO: Magic Number Floor Boundry
     if (playerPosition.posY + (height / 2) > maxHeight) {
         playerPosition.posY = maxHeight;
         isJumping = false;
     }
-
+    
     // Check Screen Boundries
     if (playerPosition.posX + (width / 2) > maxWidth) {
         playerPosition.posX = maxWidth - (width / 2);
@@ -188,6 +206,7 @@ void Player::updatePosition(float maxWidth, float maxHeight) {
     if (playerPosition.posY - (height / 2) < 0) {
         playerPosition.posY = 0 + (height / 2);
     }
+    
 }
 
 void Player::updatePlayerAnimation(float time) {

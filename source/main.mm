@@ -101,7 +101,7 @@ void keyboard (unsigned char key, int x, int y) {
             player.setIsJumping(true);
             player.setVelY(12.0f);
         }
-
+        playSound(soundCollision);
     }
     
     if (key == KEY_ESC)

@@ -9,14 +9,16 @@
 #include "soundEffects.h"
 #include "sound.h"
 
+#include <fstream>
+#include <cstring>
+
 ALCdevice *device;
 ALCcontext *context;
-ALuint soundCollision, soundExplosion, soundCow, soundPig, soundDuck;
-ALuint bufferCollision, bufferExplosion, bufferCow, bufferPig, bufferDuck;
+ALuint soundCollision, soundExplosion, soundCow, soundPig;
+ALuint bufferCollision, bufferExplosion, bufferCow, bufferPig;
 ALsizei size, freq;
 ALenum format;
 ALvoid *data;
-
 
 void playSound(ALuint sound)
 {
@@ -29,82 +31,101 @@ void playSound(ALuint sound)
     //    }
 }
 
+bool isBigEndian()
+{
+    int a=1;
+    return !((char*)&a)[0];
+}
+
+int convertToInt(char* buffer,int len)
+{
+    int a=0;
+    if(!isBigEndian())
+        for(int i=0;i<len;i++)
+            ((char*)&a)[i]=buffer[i];
+    else
+        for(int i=0;i<len;i++)
+            ((char*)&a)[3-i]=buffer[i];
+    return a;
+}
+
+char* loadWAV(const char* fn,int& chan,int& samplerate,int& bps,int& size)
+{
+    char buffer[4];
+    std::ifstream in(fn,std::ios::binary);
+    in.read(buffer,4);
+    if(strncmp(buffer,"RIFF",4)!=0)
+    {
+        std::cout << "this is not a valid WAVE file"  << std::endl;
+        return NULL;
+    }
+    in.read(buffer,4);
+    in.read(buffer,4);      //WAVE
+    in.read(buffer,4);      //fmt
+    in.read(buffer,4);      //16
+    in.read(buffer,2);      //1
+    in.read(buffer,2);
+    chan=convertToInt(buffer,2);
+    in.read(buffer,4);
+    samplerate=convertToInt(buffer,4);
+    in.read(buffer,4);
+    in.read(buffer,2);
+    in.read(buffer,2);
+    bps=convertToInt(buffer,2);
+    in.read(buffer,4);      //data
+    in.read(buffer,4);
+    size=convertToInt(buffer,4);
+    char* data=new char[size];
+    in.read(data,size);
+    return data;
+}
+
 void sound(int xpos, int zpos)
 {
-    device = alcOpenDevice(NULL);
-    context = alcCreateContext(device, NULL);
+    int channel,sampleRate,bps,size;
+    char* data=loadWAV("/Users/Korkesh/2D-Platformer/resources/SuperMarioBros.wav",channel,sampleRate,bps,size);
+    ALCdevice* device=alcOpenDevice(NULL);
+    if(device==NULL)
+    {
+        std::cout << "cannot open sound card" << std::endl;
+        return 0;
+    }
+    ALCcontext* context=alcCreateContext(device,NULL);
+    if(context==NULL)
+    {
+        std::cout << "cannot open context" << std::endl;
+        return 0;
+    }
     alcMakeContextCurrent(context);
     
-    alGenSources(1, &soundCollision);
-    alSourcef(soundCollision, AL_PITCH, 1);
-    alSourcef(soundCollision, AL_GAIN, 1);
-    alSource3f(soundCollision, AL_POSITION, xpos, 0, zpos);
-    alSourcei(soundCollision, AL_LOOPING, AL_FALSE);
-    
-    // Load .Wav file
-    if (loadWavFile("/Users/Korkesh/Downloads/FirstPersonShooter/laser.wav", &bufferCollision, &size, &freq, &format) == false) {
-        std::cerr << "COLLIDE!" << std::endl;
+    unsigned int bufferid,format;
+    alGenBuffers(1,&bufferid);
+    if(channel==1)
+    {
+        if(bps==8)
+        {
+            format=AL_FORMAT_MONO8;
+        }else{
+            format=AL_FORMAT_MONO16;
+        }
+    }else{
+        if(bps==8)
+        {
+            format=AL_FORMAT_STEREO8;
+        }else{
+            format=AL_FORMAT_STEREO16;
+        }
     }
+    alBufferData(bufferid,format,data,size,sampleRate);
+//    unsigned int sourceid;
+    alGenSources(1,&soundCollision);
+    alSourcei(soundCollision,AL_BUFFER,bufferid);
     
-    alSourcei(soundCollision, AL_BUFFER, bufferCollision);
-    
-    
-    alGenSources(2, &soundExplosion);
-    alSourcef(soundExplosion, AL_PITCH, 1);
-    alSourcef(soundExplosion, AL_GAIN, 0.5);
-    alSource3f(soundExplosion, AL_POSITION, xpos, 0, zpos);
-    alSourcei(soundExplosion, AL_LOOPING, AL_FALSE);
-    
-    // Load .Wav file
-    if (loadWavFile("/Users/Korkesh/Documents/Coding Projects/openGLTutorial/explosion.wav", &bufferExplosion, &size, &freq, &format) == false) {
-        std::cerr << "COLLIDE!" << std::endl;
-    }
-    
-    alSourcei(soundExplosion, AL_BUFFER, bufferExplosion);
-    
-    
-    
-    alGenSources(3, &soundCow);
-    alSourcef(soundCow, AL_PITCH, 1);
-    alSourcef(soundCow, AL_GAIN, 3);
-    alSource3f(soundCow, AL_POSITION, xpos, 0, zpos);
-    alSourcei(soundCow, AL_LOOPING, AL_FALSE);
-    
-    // Load .Wav file
-    if (loadWavFile("/Users/Korkesh/Documents/Coding Projects/openGLTutorial/cow.wav", &bufferCow, &size, &freq, &format) == false) {
-        std::cerr << "COLLIDE!" << std::endl;
-    }
-    
-    alSourcei(soundCow, AL_BUFFER, bufferCow);
+    alSource3f(soundCollision,AL_POSITION,0,0,0);
+    alSourcei(soundCollision,AL_LOOPING,AL_TRUE);
 
-    
-    
-    alGenSources(4, &soundPig);
-    alSourcef(soundPig, AL_PITCH, 1);
-    alSourcef(soundPig, AL_GAIN, 0.3);
-    alSource3f(soundPig, AL_POSITION, xpos, 0, zpos);
-    alSourcei(soundPig, AL_LOOPING, AL_FALSE);
-
-    // Load .Wav file
-    if (loadWavFile("/Users/Korkesh/Documents/Coding Projects/openGLTutorial/pig.wav", &bufferPig, &size, &freq, &format) == false) {
-        std::cerr << "COLLIDE!" << std::endl;
-    }
-    
-    alSourcei(soundPig, AL_BUFFER, bufferPig);
-    
-    
-    alGenSources(5, &soundDuck);
-    alSourcef(soundDuck, AL_PITCH, 1);
-    alSourcef(soundDuck, AL_GAIN, 1);
-    alSource3f(soundDuck, AL_POSITION, xpos, 0, zpos);
-    alSourcei(soundDuck, AL_LOOPING, AL_FALSE);
-    
-    // Load .Wav file
-    if (loadWavFile("/Users/Korkesh/Documents/Coding Projects/openGLTutorial/duck.wav", &bufferDuck, &size, &freq, &format) == false) {
-        std::cerr << "COLLIDE!" << std::endl;
-    }
-    
-    alSourcei(soundDuck, AL_BUFFER, bufferDuck);
+    float f[]={1,0,0,0,1,0};
+    alListenerfv(AL_ORIENTATION,f);
 
     
 }

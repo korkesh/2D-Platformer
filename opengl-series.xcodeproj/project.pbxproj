@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2F07093B19CA181700B4D365 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F07093919CA181700B4D365 /* player.cpp */; };
-		2F0EEE9519D6677B00C49A1D /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0EEE9419D6677B00C49A1D /* libSOIL.a */; };
 		2F0EEE9819DB4AC100C49A1D /* object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EEE9619DB4AC100C49A1D /* object.cpp */; };
+		2F0EEF1B19E864E500C49A1D /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0EEE9419D6677B00C49A1D /* libSOIL.a */; };
 		2FCAC09219D26A9E001B2CDA /* sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAC09019D26A9E001B2CDA /* sprite.cpp */; };
 		2FCAC09719D270D8001B2CDA /* SOIL.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAC09319D270D8001B2CDA /* SOIL.c */; };
 		2FCAC09819D270D8001B2CDA /* stb_image_aug.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAC09419D270D8001B2CDA /* stb_image_aug.c */; };
@@ -76,9 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F0EEF1B19E864E500C49A1D /* libSOIL.a in Frameworks */,
 				2FCD3B4419787C61001B744F /* OpenAL.framework in Frameworks */,
 				2FCD3B4219787C5C001B744F /* GLUT.framework in Frameworks */,
-				2F0EEE9519D6677B00C49A1D /* libSOIL.a in Frameworks */,
 				E2639AE8190D169200B6251A /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +299,10 @@
 					OpenGL,
 					Image,
 					Library/lib,
+					/Users/Korkesh/Downloads/Simple,
+					OpenGL,
+					Image,
+					Library/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = 01_project_skeleton;
@@ -314,6 +318,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/Korkesh/Downloads/Simple,
+					OpenGL,
+					Image,
+					Library/lib,
 					/Users/Korkesh/Downloads/Simple,
 					OpenGL,
 					Image,

@@ -15,8 +15,8 @@
 
 extern ALCdevice *device;
 extern ALCcontext *context;
-extern ALuint soundCollision, soundExplosion, soundCow, soundPig, soundDuck;
-extern ALuint bufferCollision, bufferExplosion, bufferCow, bufferPig, bufferDuck;
+extern ALuint soundCollision, soundExplosion, soundCow, soundPig;
+extern ALuint bufferCollision, bufferExplosion, bufferCow, bufferPig;
 extern ALsizei size, freq;
 extern ALenum format;
 extern ALvoid *data;

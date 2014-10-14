@@ -10,10 +10,10 @@
 #define __openGLTutorial__generateWorld__
 
 #include <iostream>
-#include "algebra.hpp"
+#include "sharedHeaders.h"
 
 void SetupWorld();
-void drawSceneFromFile(GLuint* textures);
-bool checkCollisions(int xpos, int ypos, int zpos);
+void drawSceneFromFile();
+bool checkCollisions(Position playerPosition, float playerWidth, float playerHeight);
 
 #endif /* defined(__openGLTutorial__generateWorld__) */

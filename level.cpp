@@ -74,7 +74,7 @@ void Level::setLevelSprite(float w, float h) {
         printf( "SOIL loading error: '%s'\n", SOIL_last_result() );
     }
     
-    test.setObjectSprite(16, 16, "/Users/Korkesh/2D-Platformer/resources/qBlock.png");
+    //test.setObjectSprite(16, 16, "/Users/Korkesh/2D-Platformer/resources/qBlock.png");
 }
 
 void Level::renderLevel() {
@@ -152,6 +152,6 @@ void Level::renderLevel() {
     glDisable(GL_TEXTURE_2D);
     glClear(GL_DEPTH_BUFFER_BIT);
     
-    test.renderObject();
+    //test.renderObject();
     
 }

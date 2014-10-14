@@ -44,6 +44,7 @@ void display (void) {
 
     // Render Scene
     level.renderLevel();
+    drawSceneFromFile();
     
     // Render Player
     player.renderPlayer();
@@ -166,7 +167,7 @@ void init (void) {
     soundEngine.sound(0, 0, 0, "/Users/Korkesh/2D-Platformer/resources/SuperMarioBros.wav", true);
     soundEngine.sound(0, 0, 0, "/Users/Korkesh/2D-Platformer/resources/jump.wav", false);
     textures();
-//    SetupWorld(); // TODO: Used to load levels
+    SetupWorld();
     
     glClearColor(0.2, 0.2, 0.6, 1.0); /* Mario Blue */
  	glViewport(0, 0, WIDTH, HEIGHT);

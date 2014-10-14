@@ -6,15 +6,14 @@
 //  Copyright (c) 2014 Matthew Correia. All rights reserved.
 //
 
-#include <GLUT/glut.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <math.h>
 #include <string>
+#include <fstream>
 
 #include "generateWorld.h"
+#include "object.h"
 
-#define CAMERA_RADIUS (0.5)
 #define EPSILON (0.9999)
 
 typedef struct Vertex
@@ -23,207 +22,96 @@ typedef struct Vertex
 	float u, v;
 } vertex;
 
-typedef struct Triangle
-{
-	vertex vertex[3];
-    GLuint texture;
-} triangle;
-
 typedef struct Square
 {
 	vertex vertex[4];
     GLuint texture;
 } square;
 
-
-//typedef struct Sector
-//{
-//	int numtriangles;
-//	triangle* triangle;
-//} sector;
-
-typedef struct Sector
+typedef struct Level
 {
-	int numSquares;
-	square* square;
+	int numObjects;
+	Object* objects;
 } sector;
 
 
-sector sector1;
+Level level1;
 
-// Source: http://nehe.gamedev.net/tutorial/loading_and_moving_through_a_3d_world/22003/
 void readstr(FILE *f, char *string)
 {
 	do
 	{
 		fgets(string, 255, f);
-	} while ((string[0] == '/') || (string[0] == '\n') || (string[0] == '\r'));
+	} while (/*(string[0] == '/') ||*/ (string[0] == '\n') || (string[0] == '\r'));
     
 	return;
 }
 
 void SetupWorld()
 {
-	float x, y, z, u, v;
+	float x, y, w, h;
+    int c, l;
+    const char* s = "/Users/Korkesh/2D-Platformer/resources/qBlock.png";
+    
     int t;
-	int numsquares;
+	int numObjects;
 	FILE *filein;
 	char oneline[255];
-	filein = fopen("/Users/Korkesh/Documents/Coding Projects/openGLTutorial/World.txt", "rt"); // File To Load World Data From
+	filein = fopen("/Users/Korkesh/2D-Platformer/resources/level1.txt", "rt"); // File To Load World Data From
     
 	readstr(filein, oneline);
-	sscanf(oneline, "NUMPOLLIES %d\n", &numsquares);
+	sscanf(oneline, "NUMOBJECTS %d\n", &numObjects);
     
-	sector1.square = new square[numsquares];
-	sector1.numSquares = numsquares;
-	for (int i = 0; i < numsquares; i++)
+	level1.objects = new Object[numObjects];
+	level1.numObjects = numObjects;
+	for (int i = 0; i < numObjects; i++)
 	{
-		for (int vert = 0; vert < 4; vert++)
-		{
-			readstr(filein, oneline);
-			sscanf(oneline, "%f %f %f %f %f %d", &x, &y, &z, &u, &v, &t);
-			sector1.square[i].vertex[vert].x = x;
-			sector1.square[i].vertex[vert].y = y;
-			sector1.square[i].vertex[vert].z = z;
-			sector1.square[i].vertex[vert].u = u;
-			sector1.square[i].vertex[vert].v = v;
-            sector1.square[i].texture = t;
-		}
+        readstr(filein, oneline);
+        sscanf(oneline, "%f %f %f %f %d %d", &x, &y, &w, &h, &c, &l);
+//        readstr(filein, oneline);
+//        sscanf(oneline, "%s", s);
+        level1.objects[i] = Object(x, y, w, h, c, l, s);
 	}
     
 	fclose(filein);
 	return;
 }
 
-// Source: http://nehe.gamedev.net/tutorial/loading_and_moving_through_a_3d_world/22003/
-void drawSceneFromFile(GLuint* textures)
+void drawSceneFromFile()
 {
-	GLfloat x_m, y_m, z_m, u_m, v_m;
-    
-	int numsquares;
-    numsquares = sector1.numSquares;
+	int numObjects;
+    numObjects = level1.numObjects;
 	
     glColor3f(1.0, 1.0, 1.0);
-	// Process Each Triangle
-	for (int i = 0; i < numsquares; i++)
+	// Process Each Object
+	for (int i = 0; i < numObjects; i++)
 	{
-        glBindTexture(GL_TEXTURE_2D, textures[sector1.square[i].texture]);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        
         glPushMatrix();
-		glBegin(GL_QUADS);
-        glNormal3f( 0.0f, 0.0f, 1.0f);
-        x_m = sector1.square[i].vertex[0].x;
-        y_m = sector1.square[i].vertex[0].y;
-        z_m = sector1.square[i].vertex[0].z;
-        u_m = sector1.square[i].vertex[0].u;
-        v_m = sector1.square[i].vertex[0].v;
-        glTexCoord2f(u_m,v_m);
-        glVertex3f(x_m,y_m,z_m);
         
-        x_m = sector1.square[i].vertex[1].x;
-        y_m = sector1.square[i].vertex[1].y;
-        z_m = sector1.square[i].vertex[1].z;
-        u_m = sector1.square[i].vertex[1].u;
-        v_m = sector1.square[i].vertex[1].v;
-        glTexCoord2f(u_m,v_m);
-        glVertex3f(x_m,y_m,z_m);
+        level1.objects[i].renderObject();
         
-        x_m = sector1.square[i].vertex[2].x;
-        y_m = sector1.square[i].vertex[2].y;
-        z_m = sector1.square[i].vertex[2].z;
-        u_m = sector1.square[i].vertex[2].u;
-        v_m = sector1.square[i].vertex[2].v;
-        glTexCoord2f(u_m,v_m);
-        glVertex3f(x_m,y_m,z_m);
-        
-        x_m = sector1.square[i].vertex[3].x;
-        y_m = sector1.square[i].vertex[3].y;
-        z_m = sector1.square[i].vertex[3].z;
-        u_m = sector1.square[i].vertex[3].u;
-        v_m = sector1.square[i].vertex[3].v;
-        glTexCoord2f(u_m,v_m);
-        glVertex3f(x_m,y_m,z_m);
-        
-		glEnd();
         glPopMatrix();
 	}
 	return;
 }
 
-bool checkCollisions(int xpos, int ypos, int zpos)
+bool checkCollisions(Position playerPosition, float playerWidth, float playerHeight)
 {
     
     bool collide = false;
-    float radius = 1.0f;
-    GLfloat x_m, y_m, z_m;
 
-    Vector3D origin = Vector3D(xpos, ypos, zpos);
-    Point3D originP = Point3D(xpos, ypos, zpos);
-
-    // go through all of our triangles
-    int numsquares;
-    numsquares = sector1.numSquares;
+    int numObjects;
+    numObjects = level1.numObjects;
 	
-	// Process Each Triangle
-	for (int i = 0; i < numsquares; i++)
+	// Process Each Object
+	for (int i = 0; i < numObjects; i++)
 	{
-        x_m = sector1.square[i].vertex[0].x;
-        y_m = sector1.square[i].vertex[0].y;
-        z_m = sector1.square[i].vertex[0].z;
-        Vector3D v1 = Vector3D(x_m, y_m, z_m);
-        
-        x_m = sector1.square[i].vertex[1].x;
-        y_m = sector1.square[i].vertex[1].y;
-        z_m = sector1.square[i].vertex[1].z;
-        Vector3D v2 = Vector3D(x_m, y_m, z_m);
-        
-        x_m = sector1.square[i].vertex[2].x;
-        y_m = sector1.square[i].vertex[2].y;
-        z_m = sector1.square[i].vertex[2].z;
-        Vector3D v3 = Vector3D(x_m, y_m, z_m);
-        
-        x_m = sector1.square[i].vertex[3].x;
-        y_m = sector1.square[i].vertex[3].y;
-        z_m = sector1.square[i].vertex[3].z;
-        Vector3D v4 = Vector3D(x_m, y_m, z_m);
-
-        Vector3D square[4] = {v1, v2, v3, v4};
-        
-        Vector3D A = square[2] - square[0];
-        Vector3D B = square[1] - square[0];
-        
-        Vector3D faceNormal = A.cross(B);
-        faceNormal.normalize();
-        
-        float t = 0.0f;
-        double angle = 0.0;
-
-        float d = - (faceNormal.dot(square[0]));
-        t = fabs((faceNormal.dot(origin)) + d);
-        
-        if (t < CAMERA_RADIUS) {
-            
-            Vector3D offset = t * faceNormal;
-            Vector3D intersectionPoint = origin - offset;
-            
-            for (int i = 0; i < 4; i++)
-            {
-                A = square[i] - intersectionPoint;
-                B = square[(i + 1) % 4] - intersectionPoint;
-                
-                angle += acos((A.dot(B)) / (sqrtf(A.dot(A)) * sqrtf(B.dot(B))));
-            }
-            
-            if(angle >= (EPSILON * (2.0 * M_PI)) )
-            {
-                collide = true;
-            }
+        if (level1.objects[i].collideObject(playerPosition, playerWidth, playerHeight)) {
+            collide = true;
         }
-
     }
-        return collide;
+    
+    return collide;
 }
 
 

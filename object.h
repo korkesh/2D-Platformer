@@ -30,6 +30,7 @@ class Object {
 public:
     // Constructor/Destructor
     Object();
+    Object(float x, float y, float w, float h, bool c, bool l, const char *s);
     ~Object();
     
     // Setters & Getters

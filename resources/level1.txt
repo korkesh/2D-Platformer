@@ -1,0 +1,4 @@
+NUMOBJECTS 1
+
+1000 500 32 32 1 0
+/Users/Korkesh/2D-Platformer/resources/qBlock.png 

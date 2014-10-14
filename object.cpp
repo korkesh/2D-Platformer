@@ -9,7 +9,21 @@
 #include "object.h"
 
 Object::Object() {
-    objectPosition.posX = 1000.0f;
+    objectPosition.posX = 0.0f;
+    objectPosition.posY = 0.0f;
+    objectPosition.velX = 0.0f;
+    objectPosition.velY = 0.0f;
+    
+    objectWidth = 0.0f;
+    objectHeight = 0.0f;
+    
+    objectID = 0;
+    
+    bool collide = true;
+    bool lethal = false;
+
+    // TESTING PURPOSES
+   /* objectPosition.posX = 1000.0f;
     objectPosition.posY = 500.0f;
     objectPosition.velX = 0.0f;
     objectPosition.velY = 0.0f;
@@ -20,9 +34,27 @@ Object::Object() {
     objectID = 0;
     
     bool collide = true;
-    bool lethal = false;
+    bool lethal = false;*/
     
 }
+
+Object::Object(float x, float y, float w, float h, bool c, bool l, const char *s) {
+    objectPosition.posX = x;
+    objectPosition.posY = y;
+    objectPosition.velX = 0.0f;
+    objectPosition.velY = 0.0f;
+    
+    objectWidth = w;
+    objectHeight = h;
+    
+    objectID = 0;
+    
+    bool collide = c;
+    bool lethal = l;
+
+    setObjectSprite(w, h, s);
+}
+
 
 Object::~Object() {
     
@@ -78,6 +110,11 @@ void Object::renderObject(void) {
 }
 
 bool Object::collideObject(Position playerPosition, float playerWidth, float playerHeight) {
+    // Check if collision is possible
+    if (collide == false) {
+        return false;
+    }
+    
     float leftA, leftB;
     float rightA, rightB;
     float topA, topB;

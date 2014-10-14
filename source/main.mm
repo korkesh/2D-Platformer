@@ -6,6 +6,7 @@
 
 Player player;
 Level level;
+SoundEngine soundEngine;
 
 float prevXpos = 0, prevYpos = 1.5, prevZpos = 15;
 float lastx = WIDTH/2, lasty = HEIGHT/2;
@@ -77,6 +78,7 @@ void keyboard (unsigned char key, int x, int y) {
         if (!player.getIsJumping()) {
             player.setIsJumping(true);
             player.setVelY(12.0f);
+            soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("/Users/Korkesh/2D-Platformer/resources/jump.wav")->second]);
         }
     }
     
@@ -100,8 +102,8 @@ void keyboard (unsigned char key, int x, int y) {
         if (!player.getIsJumping()) {
             player.setIsJumping(true);
             player.setVelY(12.0f);
+            soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("/Users/Korkesh/2D-Platformer/resources/jump.wav")->second]);
         }
-        playSound(soundCollision);
     }
     
     if (key == KEY_ESC)
@@ -160,7 +162,9 @@ void init (void) {
     player = Player();
     player.initializeSprite();
     player.setPosition(player.getPosition().posX, level.getLevelHeight());
-    sound(xpos, zpos);
+    soundEngine = SoundEngine();
+    soundEngine.sound(0, 0, 0, "/Users/Korkesh/2D-Platformer/resources/SuperMarioBros.wav", true);
+    soundEngine.sound(0, 0, 0, "/Users/Korkesh/2D-Platformer/resources/jump.wav", false);
     textures();
 //    SetupWorld(); // TODO: Used to load levels
     
@@ -170,6 +174,8 @@ void init (void) {
  	glMatrixMode(GL_PROJECTION);
  	glLoadIdentity();
     glOrtho(0, WIDTH, HEIGHT, 0, 0, 1);
+    
+    soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("/Users/Korkesh/2D-Platformer/resources/SuperMarioBros.wav")->second]);
 
 }
 

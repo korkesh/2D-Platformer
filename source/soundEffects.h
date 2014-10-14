@@ -12,16 +12,31 @@
 #include <OpenAL/al.h>
 #include <OpenAL/alc.h>
 #include <iostream>
+#include <map>
 
-extern ALCdevice *device;
-extern ALCcontext *context;
-extern ALuint soundCollision, soundExplosion, soundCow, soundPig;
-extern ALuint bufferCollision, bufferExplosion, bufferCow, bufferPig;
-extern ALsizei size, freq;
-extern ALenum format;
-extern ALvoid *data;
+#define MAX_SOUNDS (10)
 
-void playSound(ALuint sound);
-void sound(int xpos, int zpos);
+class SoundEngine {
+    
+    ALuint soundArray[MAX_SOUNDS];
+
+    std::map<const char*, ALuint> soundMap;
+    
+    ALuint soundIndex;
+    
+public:
+    SoundEngine();
+    
+    std::map<const char*, ALuint> getSoundMap() { return soundMap; }
+    ALuint* getSound() { return soundArray;}
+    
+    void playSound(ALuint sound);
+    void sound(int xpos, int ypos, int zpos, const char* fileName, bool looping);
+
+    bool isBigEndian();
+    int convertToInt(char* buffer,int len);
+    char* loadWAV(const char* fn,int& chan,int& samplerate,int& bps,int& size);
+
+};
 
 #endif /* defined(__opengl_series__soundEffects__) */

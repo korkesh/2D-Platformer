@@ -7,20 +7,15 @@
 //
 
 #include "soundEffects.h"
-#include "sound.h"
 
 #include <fstream>
 #include <cstring>
 
-ALCdevice *device;
-ALCcontext *context;
-ALuint soundCollision, soundExplosion, soundCow, soundPig;
-ALuint bufferCollision, bufferExplosion, bufferCow, bufferPig;
-ALsizei size, freq;
-ALenum format;
-ALvoid *data;
+SoundEngine::SoundEngine() {
+    soundIndex = 1;
+}
 
-void playSound(ALuint sound)
+void SoundEngine::playSound(ALuint sound)
 {
     alSourcePlay(sound);
     // *********This blocks main thread******
@@ -31,13 +26,13 @@ void playSound(ALuint sound)
     //    }
 }
 
-bool isBigEndian()
+bool SoundEngine::isBigEndian()
 {
     int a=1;
     return !((char*)&a)[0];
 }
 
-int convertToInt(char* buffer,int len)
+int SoundEngine::convertToInt(char* buffer,int len)
 {
     int a=0;
     if(!isBigEndian())
@@ -49,7 +44,7 @@ int convertToInt(char* buffer,int len)
     return a;
 }
 
-char* loadWAV(const char* fn,int& chan,int& samplerate,int& bps,int& size)
+char* SoundEngine::loadWAV(const char* fn,int& chan,int& samplerate,int& bps,int& size)
 {
     char buffer[4];
     std::ifstream in(fn,std::ios::binary);
@@ -80,12 +75,12 @@ char* loadWAV(const char* fn,int& chan,int& samplerate,int& bps,int& size)
     return data;
 }
 
-void sound(int xpos, int zpos)
-{
-    int channel,sampleRate,bps,size;
-    char* data=loadWAV("/Users/Korkesh/2D-Platformer/resources/SuperMarioBros.wav",channel,sampleRate,bps,size);
+void SoundEngine::sound(int xpos, int ypos, int zpos, const char* fileName, bool looping) {
+    
+    int channel, sampleRate, bps, size;
+    char* data = loadWAV(fileName, channel, sampleRate, bps, size);
     ALCdevice* device=alcOpenDevice(NULL);
-    if(device==NULL)
+    if(device == NULL)
     {
         std::cout << "cannot open sound card" << std::endl;
         return 0;
@@ -99,33 +94,42 @@ void sound(int xpos, int zpos)
     alcMakeContextCurrent(context);
     
     unsigned int bufferid,format;
-    alGenBuffers(1,&bufferid);
-    if(channel==1)
+    alGenBuffers(2, &bufferid);
+    if(channel == 1)
     {
-        if(bps==8)
+        if(bps == 8)
         {
-            format=AL_FORMAT_MONO8;
+            format = AL_FORMAT_MONO8;
         }else{
-            format=AL_FORMAT_MONO16;
+            format = AL_FORMAT_MONO16;
         }
     }else{
-        if(bps==8)
+        if(bps == 8)
         {
-            format=AL_FORMAT_STEREO8;
+            format = AL_FORMAT_STEREO8;
         }else{
-            format=AL_FORMAT_STEREO16;
+            format = AL_FORMAT_STEREO16;
         }
     }
-    alBufferData(bufferid,format,data,size,sampleRate);
-//    unsigned int sourceid;
-    alGenSources(1,&soundCollision);
-    alSourcei(soundCollision,AL_BUFFER,bufferid);
     
-    alSource3f(soundCollision,AL_POSITION,0,0,0);
-    alSourcei(soundCollision,AL_LOOPING,AL_TRUE);
-
-    float f[]={1,0,0,0,1,0};
-    alListenerfv(AL_ORIENTATION,f);
-
+    ALuint soundMusic;
+    alBufferData(bufferid, format, data, size, sampleRate);
+    alGenSources(2, &soundMusic);
+    alSourcei(soundMusic, AL_BUFFER, bufferid);
+    
+    alSource3f(soundMusic, AL_POSITION, 0, 0, 0);
+    if (looping) {
+        alSourcei(soundMusic, AL_LOOPING, AL_TRUE);
+    } else {
+        alSourcei(soundMusic, AL_LOOPING, AL_FALSE);
+    }
+    
+    float f[]={1, 0, 0, 0, 1, 0};
+    alListenerfv(AL_ORIENTATION, f);
+    
+    soundArray[soundIndex] = soundMusic;
+    
+    soundMap.insert(std::pair<const char*, ALuint>(fileName, soundIndex));
+    soundIndex++;
     
 }

@@ -44,7 +44,6 @@ void display (void) {
 
     // Render Scene
     level.renderLevel();
-    drawSceneFromFile();
     
     // Render Player
     player.renderPlayer();
@@ -59,7 +58,7 @@ void display (void) {
 //====================================================
 void update (int t) {
     
-    player.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjectList());
+    player.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects());
     player.updatePlayerAnimation(FPS / 1000.0f);
     
 	glutPostRedisplay();
@@ -160,6 +159,7 @@ void init (void) {
     enable(); // Enable OpenGL Parameters
     level = Level(0, 0, WIDTH * 3, HEIGHT - 150.0f);
     level.setLevelSprite(WIDTH, HEIGHT - 150.0f);
+    level.loadLevelFromFile("/Users/Korkesh/2D-Platformer/resources/level1.txt");
     player = Player();
     player.initializeSprite();
     player.setPosition(player.getPosition().posX, level.getLevelHeight());
@@ -167,7 +167,7 @@ void init (void) {
     soundEngine.sound(0, 0, 0, "/Users/Korkesh/2D-Platformer/resources/SuperMarioBros.wav", true);
     soundEngine.sound(0, 0, 0, "/Users/Korkesh/2D-Platformer/resources/jump.wav", false);
     textures();
-    SetupWorld();
+    //SetupWorld();
     
     glClearColor(0.2, 0.2, 0.6, 1.0); /* Mario Blue */
  	glViewport(0, 0, WIDTH, HEIGHT);

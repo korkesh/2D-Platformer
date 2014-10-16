@@ -8,9 +8,17 @@
 
 #include "level.h"
 
-Level::Level(float x, float y, float w, float h, bool c) {
-    test = Object();
+void readstr(FILE *f, char *string)
+{
+	do
+	{
+		fgets(string, 255, f);
+	} while (/*(string[0] == '/') ||*/ (string[0] == '\n') || (string[0] == '\r'));
     
+	return;
+}
+
+Level::Level(float x, float y, float w, float h, bool c) {
     posX = x;
     posY = y;
     
@@ -19,10 +27,38 @@ Level::Level(float x, float y, float w, float h, bool c) {
     
     collision = c;
     
+    objects = NULL;
+    numObjects = 0;
 }
 
 Level::~Level() {
     
+}
+
+void Level::loadLevelFromFile(const char* file) {
+	float x, y, w, h;
+    int c, l;
+    const char* s = "/Users/Korkesh/2D-Platformer/resources/qBlock.png";
+    
+	FILE *filein;
+	char oneline[255];
+	filein = fopen(file, "rt"); // File To Load World Data From
+    
+	readstr(filein, oneline);
+	sscanf(oneline, "NUMOBJECTS %d\n", &numObjects);
+    
+	objects = new Object[numObjects];
+	for (int i = 0; i < numObjects; i++)
+	{
+        readstr(filein, oneline);
+        sscanf(oneline, "%f %f %f %f %d %d", &x, &y, &w, &h, &c, &l);
+        //        readstr(filein, oneline);
+        //        sscanf(oneline, "%s", s);
+        objects[i] = Object(x, y, w, h, c, l, s);
+	}
+    
+	fclose(filein);
+	return;
 }
 
 void Level::setLevelSprite(float w, float h) {
@@ -152,6 +188,22 @@ void Level::renderLevel() {
     glDisable(GL_TEXTURE_2D);
     glClear(GL_DEPTH_BUFFER_BIT);
     
-    //test.renderObject();
-    
+    drawLevel();
+}
+
+void Level::drawLevel() {
+	int numObjects;
+    numObjects = numObjects;
+	
+    glColor3f(1.0, 1.0, 1.0);
+	// Process Each Object
+	for (int i = 0; i < numObjects; i++)
+	{
+        glPushMatrix();
+        
+        objects[i].renderObject();
+        
+        glPopMatrix();
+	}
+	return;
 }

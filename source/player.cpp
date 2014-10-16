@@ -144,7 +144,7 @@ Player::~Player(void) {
     
 }
 
-void Player::updatePosition(float maxWidth, float maxHeight, Object test) {
+void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects) {
     
     Position previousPosition = playerPosition;
     
@@ -166,30 +166,33 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object test) {
     }
     
     // Test for collision
-    if (test.collideObject(playerPosition, width / 2, height-1.0f)) {
-        if (isJumping && playerPosition.velY >= 0) {
-            if (playerState == RIGHT || playerState == LEFT) {
-                playerState = IDLE;
+    for (int i = 0 ; i < numObjects; i++) {
+        Object currentObject = objects[i];
+        if (currentObject.collideObject(playerPosition, width / 2, height-1.0f)) {
+            if (isJumping && playerPosition.velY >= 0) {
+                if (playerState == RIGHT || playerState == LEFT) {
+                    playerState = IDLE;
+                }
+                playerPosition = previousPosition;
+                playerPosition.velY = 0;
+            } else if (isJumping && playerPosition.velY < 0) {
+                if (playerState == RIGHT || playerState == LEFT) {
+                    playerState = IDLE;
+                }
+                playerPosition = previousPosition;
+                playerPosition.velY = 0;
+                isJumping = false;
+            } else {
+                playerPosition = previousPosition;
             }
-            playerPosition = previousPosition;
-            playerPosition.velY = 0;
-        } else if (isJumping && playerPosition.velY < 0) {
-            if (playerState == RIGHT || playerState == LEFT) {
-                playerState = IDLE;
+        } else if (!isJumping && playerPosition.posY + (height / 2) <= maxHeight) {
+            playerPosition.posY -= playerPosition.velY;
+            playerPosition.velY += gravity;
+            
+            if (currentObject.collideObject(playerPosition, width / 2, height-1.0f)) {
+                playerPosition.posY = previousPosition.posY;
+                playerPosition.velY = 0;
             }
-            playerPosition = previousPosition;
-            playerPosition.velY = 0;
-            isJumping = false;
-        } else {
-            playerPosition = previousPosition;
-        }
-    } else if (!isJumping && playerPosition.posY + (height / 2) <= maxHeight) {
-        playerPosition.posY -= playerPosition.velY;
-        playerPosition.velY += gravity;
-        
-        if (test.collideObject(playerPosition, width / 2, height-1.0f)) {
-            playerPosition.posY = previousPosition.posY;
-            playerPosition.velY = 0;
         }
     }
     

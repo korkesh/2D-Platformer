@@ -27,7 +27,8 @@ class Level {
     Sprite levelSpriteGroundTop;
     Sprite levelSpriteGroundBottom;
     
-    Object test;
+	int numObjects;
+	Object* objects;
     
 public:
     Level(float x = 0, float y = 0, float w = 0, float h = 0, bool c = false);
@@ -38,9 +39,15 @@ public:
     
     void setLevelSprite(float w, float h);
     
-    Object getObjectList(void) { return test; }
+    Object* getObjects(void) { return objects; }
+    int getNumObjects(void) { return numObjects; }
     
     void renderLevel(void);
+    
+    void loadLevelFromFile(const char* file);
+    void drawLevel();
+    bool checkCollisions(Position playerPosition, float playerWidth, float playerHeight);
+
 };
 
 #endif /* defined(__opengl_series__level__) */

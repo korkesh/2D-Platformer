@@ -76,7 +76,7 @@ public:
     void initializeSprite();
     
     //Position
-    void updatePosition(float maxWidth, float maxHeight, Object test);
+    void updatePosition(float maxWidth, float maxHeight,  Object* objects, int numObjects);
     
     // Render
     void renderPlayer(void);

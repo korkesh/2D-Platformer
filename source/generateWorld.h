@@ -12,8 +12,8 @@
 #include <iostream>
 #include "sharedHeaders.h"
 
-void SetupWorld();
-void drawSceneFromFile();
-bool checkCollisions(Position playerPosition, float playerWidth, float playerHeight);
+//void SetupWorld();
+//void drawSceneFromFile();
+//bool checkCollisions(Position playerPosition, float playerWidth, float playerHeight);
 
 #endif /* defined(__openGLTutorial__generateWorld__) */

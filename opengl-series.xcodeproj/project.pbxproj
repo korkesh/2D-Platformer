@@ -17,11 +17,9 @@
 		2FCAC09219D26A9E001B2CDA /* sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAC09019D26A9E001B2CDA /* sprite.cpp */; };
 		2FCAC09D19D27329001B2CDA /* level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAC09B19D27329001B2CDA /* level.cpp */; };
 		2FCD3B3419787BCC001B744F /* algebra.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD3B1B19787BCB001B744F /* algebra.cpp */; };
-		2FCD3B3719787BCC001B744F /* generateWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD3B2119787BCB001B744F /* generateWorld.cpp */; };
 		2FCD3B3819787BCC001B744F /* imageloader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD3B2319787BCB001B744F /* imageloader.cpp */; };
 		2FCD3B3919787BCC001B744F /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD3B2519787BCB001B744F /* main.mm */; };
 		2FCD3B3D19787BCC001B744F /* sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD3B2C19787BCC001B744F /* sound.cpp */; };
-		2FCD3B3F19787BCC001B744F /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD3B3019787BCC001B744F /* texture.cpp */; };
 		2FCD3B4019787BCC001B744F /* UI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD3B3219787BCC001B744F /* UI.cpp */; };
 		2FCD3B4219787C5C001B744F /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD3B4119787C5C001B744F /* GLUT.framework */; };
 		2FCD3B4419787C61001B744F /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD3B4319787C61001B744F /* OpenAL.framework */; };
@@ -48,15 +46,11 @@
 		2FCAC09C19D27329001B2CDA /* level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level.h; sourceTree = SOURCE_ROOT; };
 		2FCD3B1B19787BCB001B744F /* algebra.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = algebra.cpp; path = source/algebra.cpp; sourceTree = SOURCE_ROOT; };
 		2FCD3B1C19787BCB001B744F /* algebra.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = algebra.hpp; path = source/algebra.hpp; sourceTree = SOURCE_ROOT; };
-		2FCD3B2119787BCB001B744F /* generateWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = generateWorld.cpp; path = source/generateWorld.cpp; sourceTree = SOURCE_ROOT; };
-		2FCD3B2219787BCB001B744F /* generateWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = generateWorld.h; path = source/generateWorld.h; sourceTree = SOURCE_ROOT; };
 		2FCD3B2319787BCB001B744F /* imageloader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imageloader.cpp; path = source/imageloader.cpp; sourceTree = SOURCE_ROOT; };
 		2FCD3B2419787BCB001B744F /* imageloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imageloader.h; path = source/imageloader.h; sourceTree = SOURCE_ROOT; };
 		2FCD3B2519787BCB001B744F /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = source/main.mm; sourceTree = SOURCE_ROOT; };
 		2FCD3B2C19787BCC001B744F /* sound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sound.cpp; path = source/sound.cpp; sourceTree = SOURCE_ROOT; };
 		2FCD3B2D19787BCC001B744F /* sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sound.h; path = source/sound.h; sourceTree = SOURCE_ROOT; };
-		2FCD3B3019787BCC001B744F /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = texture.cpp; path = source/texture.cpp; sourceTree = SOURCE_ROOT; };
-		2FCD3B3119787BCC001B744F /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = texture.h; path = source/texture.h; sourceTree = SOURCE_ROOT; };
 		2FCD3B3219787BCC001B744F /* UI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UI.cpp; path = source/UI.cpp; sourceTree = SOURCE_ROOT; };
 		2FCD3B3319787BCC001B744F /* UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UI.h; path = source/UI.h; sourceTree = SOURCE_ROOT; };
 		2FCD3B4119787C5C001B744F /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -142,10 +136,6 @@
 				2FCD3B1A19787BB9001B744F /* Extensions */,
 				2F07093719C966CA00B4D365 /* sharedConstants.h */,
 				2F07093819C966FD00B4D365 /* sharedHeaders.h */,
-				2FCD3B2119787BCB001B744F /* generateWorld.cpp */,
-				2FCD3B2219787BCB001B744F /* generateWorld.h */,
-				2FCD3B3019787BCC001B744F /* texture.cpp */,
-				2FCD3B3119787BCC001B744F /* texture.h */,
 				2FCD3B3219787BCC001B744F /* UI.cpp */,
 				2FCD3B3319787BCC001B744F /* UI.h */,
 				2FE79B051979C7DF007FBA20 /* soundEffects.cpp */,
@@ -229,7 +219,6 @@
 				2F0EEE9819DB4AC100C49A1D /* object.cpp in Sources */,
 				2F8A443E19EB248B00B37063 /* image_helper.c in Sources */,
 				2FCD3B3419787BCC001B744F /* algebra.cpp in Sources */,
-				2FCD3B3F19787BCC001B744F /* texture.cpp in Sources */,
 				2F8A443B19EB248B00B37063 /* SOIL.c in Sources */,
 				2FCD3B3D19787BCC001B744F /* sound.cpp in Sources */,
 				2F8A443C19EB248B00B37063 /* stb_image_aug.c in Sources */,
@@ -237,7 +226,6 @@
 				2FCD3B3819787BCC001B744F /* imageloader.cpp in Sources */,
 				2FCD3B3919787BCC001B744F /* main.mm in Sources */,
 				2F07093B19CA181700B4D365 /* player.cpp in Sources */,
-				2FCD3B3719787BCC001B744F /* generateWorld.cpp in Sources */,
 				E2639AF3190D16D900B6251A /* glew.c in Sources */,
 				2FCD3B4019787BCC001B744F /* UI.cpp in Sources */,
 				2F8A443D19EB248B00B37063 /* image_DXT.c in Sources */,

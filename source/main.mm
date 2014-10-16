@@ -78,7 +78,7 @@ void keyboard (unsigned char key, int x, int y) {
         if (!player.getIsJumping()) {
             player.setIsJumping(true);
             player.setVelY(12.0f);
-            soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("/Users/Korkesh/2D-Platformer/resources/jump.wav")->second]);
+            //soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("/Users/Korkesh/2D-Platformer/resources/jump.wav")->second]);
         }
     }
     
@@ -102,7 +102,7 @@ void keyboard (unsigned char key, int x, int y) {
         if (!player.getIsJumping()) {
             player.setIsJumping(true);
             player.setVelY(12.0f);
-            soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("/Users/Korkesh/2D-Platformer/resources/jump.wav")->second]);
+            //soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("/Users/Korkesh/2D-Platformer/resources/jump.wav")->second]);
         }
     }
     

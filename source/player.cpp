@@ -166,16 +166,18 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
     }
     
     // Test for collision
+    bool collide = false;
     for (int i = 0 ; i < numObjects; i++) {
         Object currentObject = objects[i];
-        if (currentObject.collideObject(playerPosition, width / 2, height-1.0f)) {
+        if (currentObject.collideObject(playerPosition, width / 2, height - 1.0f)) {
+            collide = true;
             if (isJumping && playerPosition.velY >= 0) {
                 if (playerState == RIGHT || playerState == LEFT) {
                     playerState = IDLE;
                 }
                 playerPosition = previousPosition;
                 playerPosition.velY = 0;
-            } else if (isJumping && playerPosition.velY < 0) {
+            } else if (playerPosition.velY < 0) {
                 if (playerState == RIGHT || playerState == LEFT) {
                     playerState = IDLE;
                 }
@@ -185,13 +187,18 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
             } else {
                 playerPosition = previousPosition;
             }
-        } else if (!isJumping && playerPosition.posY + (height / 2) <= maxHeight) {
-            playerPosition.posY -= playerPosition.velY;
-            playerPosition.velY += gravity;
-            
-            if (currentObject.collideObject(playerPosition, width / 2, height-1.0f)) {
-                playerPosition.posY = previousPosition.posY;
-                playerPosition.velY = 0;
+        }
+    }
+    
+    if (!isJumping && playerPosition.posY + (height / 2) <= maxHeight && !collide) {
+        playerPosition.posY -= playerPosition.velY;
+        playerPosition.velY += gravity;
+        
+        for (int i = 0 ; i < numObjects; i++) {
+            Object currentObject = objects[i];
+            if (currentObject.collideObject(playerPosition, width / 2, height - 1.0f)) {
+                playerPosition = previousPosition;
+                playerPosition.velY = 0.0f;
             }
         }
     }

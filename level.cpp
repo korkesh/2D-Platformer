@@ -192,11 +192,7 @@ void Level::renderLevel() {
 }
 
 void Level::drawLevel() {
-	int numObjects;
-    numObjects = numObjects;
-	
     glColor3f(1.0, 1.0, 1.0);
-	// Process Each Object
 	for (int i = 0; i < numObjects; i++)
 	{
         glPushMatrix();

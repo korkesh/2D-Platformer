@@ -13,7 +13,7 @@ void readstr(FILE *f, char *string)
 	do
 	{
 		fgets(string, 255, f);
-	} while (/*(string[0] == '/') ||*/ (string[0] == '\n') || (string[0] == '\r'));
+	} while ((string[0] == '\n') || (string[0] == '\r'));
     
 	return;
 }
@@ -62,7 +62,7 @@ void Level::loadLevelFromFile(const char* file) {
 void Level::setLevelSprite(float w, float h) {
     GLuint tex_2d = SOIL_load_OGL_texture
 	(
-     "/Users/Korkesh/2D-Platformer/resources/sky.png",
+     "sky.png",
      SOIL_LOAD_AUTO,
      SOIL_CREATE_NEW_ID,
      SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
@@ -78,7 +78,7 @@ void Level::setLevelSprite(float w, float h) {
     
     tex_2d = SOIL_load_OGL_texture
 	(
-     "/Users/Korkesh/2D-Platformer/resources/grass.png",
+     "grass.png",
      SOIL_LOAD_AUTO,
      SOIL_CREATE_NEW_ID,
      SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
@@ -94,7 +94,7 @@ void Level::setLevelSprite(float w, float h) {
     
     tex_2d = SOIL_load_OGL_texture
 	(
-     "/Users/Korkesh/2D-Platformer/resources/ground.png",
+     "ground.png",
      SOIL_LOAD_AUTO,
      SOIL_CREATE_NEW_ID,
      SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
@@ -108,7 +108,6 @@ void Level::setLevelSprite(float w, float h) {
         printf( "SOIL loading error: '%s'\n", SOIL_last_result() );
     }
     
-    //test.setObjectSprite(16, 16, "/Users/Korkesh/2D-Platformer/resources/qBlock.png");
 }
 
 void Level::renderLevel() {

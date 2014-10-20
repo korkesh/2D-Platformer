@@ -1,11 +1,11 @@
 NUMOBJECTS 5
 
-800 500 32 32 1 0 /Users/Korkesh/2D-Platformer/resources/qBlock.png
+800 500 32 32 1 0 qBlock.png
 
-840 500 32 32 1 0 /Users/Korkesh/2D-Platformer/resources/qBlock.png
+840 500 32 32 1 0 qBlock.png
 
-890 500 32 32 1 0 /Users/Korkesh/2D-Platformer/resources/marioRun.png
+890 500 32 32 1 0 qBlock.png
 
-940 500 32 32 1 0 /Users/Korkesh/2D-Platformer/resources/qBlock.png
+940 500 32 32 1 0 qBlock.png
 
-990 500 32 32 1 0 /Users/Korkesh/2D-Platformer/resources/qBlock.png
+990 500 32 32 1 0 qBlock.png

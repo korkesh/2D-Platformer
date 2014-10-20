@@ -102,7 +102,7 @@ void keyboard (unsigned char key, int x, int y) {
         if (!player.getIsJumping()) {
             player.setIsJumping(true);
             player.setVelY(12.0f);
-            //soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("/Users/Korkesh/2D-Platformer/resources/jump.wav")->second]);
+            //soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("jump.wav")->second]);
         }
     }
     
@@ -159,13 +159,13 @@ void init (void) {
     enable(); // Enable OpenGL Parameters
     level = Level(0, 0, WIDTH * 3, HEIGHT - 150.0f);
     level.setLevelSprite(WIDTH, HEIGHT - 150.0f);
-    level.loadLevelFromFile("/Users/Korkesh/2D-Platformer/resources/level1.txt");
+    level.loadLevelFromFile("level1.txt");
     player = Player();
     player.initializeSprite();
     player.setPosition(player.getPosition().posX, level.getLevelHeight());
     soundEngine = SoundEngine();
     //soundEngine.sound(0, 0, 0, "/Users/Korkesh/2D-Platformer/resources/SuperMarioBros.wav", true);
-    soundEngine.sound(0, 0, 0, "/Users/Korkesh/2D-Platformer/resources/jump.wav", false);
+    soundEngine.sound(0, 0, 0, "jump.wav", false);
     
     glClearColor(0.2, 0.2, 0.6, 1.0); /* Mario Blue */
  	glViewport(0, 0, WIDTH, HEIGHT);

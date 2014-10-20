@@ -51,7 +51,7 @@ char* SoundEngine::loadWAV(const char* fn,int& chan,int& samplerate,int& bps,int
     in.read(buffer,4);
     if(strncmp(buffer,"RIFF",4)!=0)
     {
-        std::cout << "this is not a valid WAVE file"  << std::endl;
+        std::cout << "this is not a valid WAVE file: " << fn << std::endl;
         return NULL;
     }
     in.read(buffer,4);

@@ -29,7 +29,7 @@ Player::Player(void) {
 void Player::initializeSprite() {
     GLuint tex_2d = SOIL_load_OGL_texture
 	(
-     "/Users/Korkesh/2D-Platformer/resources/marioidle.png",
+     "marioidle.png",
      SOIL_LOAD_AUTO,
      SOIL_CREATE_NEW_ID,
      SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
@@ -45,7 +45,7 @@ void Player::initializeSprite() {
     
     tex_2d = SOIL_load_OGL_texture
 	(
-     "/Users/Korkesh/Desktop/mario.png",
+     "mario.png",
      SOIL_LOAD_AUTO,
      SOIL_CREATE_NEW_ID,
      SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
@@ -61,7 +61,7 @@ void Player::initializeSprite() {
     
     tex_2d = SOIL_load_OGL_texture
 	(
-     "/Users/Korkesh/2D-Platformer/resources/marioRun.png",
+     "marioRun.png",
      SOIL_LOAD_AUTO,
      SOIL_CREATE_NEW_ID,
      SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
@@ -77,7 +77,7 @@ void Player::initializeSprite() {
     
     tex_2d = SOIL_load_OGL_texture
 	(
-     "/Users/Korkesh/2D-Platformer/resources/marioIdleLeft.png",
+     "marioIdleLeft.png",
      SOIL_LOAD_AUTO,
      SOIL_CREATE_NEW_ID,
      SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
@@ -93,7 +93,7 @@ void Player::initializeSprite() {
     
     tex_2d = SOIL_load_OGL_texture
 	(
-     "/Users/Korkesh/2D-Platformer/resources/marioRunLeft.png",
+     "marioRunLeft.png",
      SOIL_LOAD_AUTO,
      SOIL_CREATE_NEW_ID,
      SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
@@ -109,7 +109,7 @@ void Player::initializeSprite() {
     
     tex_2d = SOIL_load_OGL_texture
 	(
-     "/Users/Korkesh/2D-Platformer/resources/marioJumpRight.png",
+     "marioJumpRight.png",
      SOIL_LOAD_AUTO,
      SOIL_CREATE_NEW_ID,
      SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
@@ -125,7 +125,7 @@ void Player::initializeSprite() {
     
     tex_2d = SOIL_load_OGL_texture
 	(
-     "/Users/Korkesh/2D-Platformer/resources/marioJumpLeft.png",
+     "marioJumpLeft.png",
      SOIL_LOAD_AUTO,
      SOIL_CREATE_NEW_ID,
      SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT

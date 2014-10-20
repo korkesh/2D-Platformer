@@ -21,20 +21,6 @@ Object::Object() {
     
     bool collide = true;
     bool lethal = false;
-
-    // TESTING PURPOSES
-   /* objectPosition.posX = 1000.0f;
-    objectPosition.posY = 500.0f;
-    objectPosition.velX = 0.0f;
-    objectPosition.velY = 0.0f;
-
-    objectWidth = 16.0f * 2;
-    objectHeight = 16.0f * 2;
-    
-    objectID = 0;
-    
-    bool collide = true;
-    bool lethal = false;*/
     
 }
 

@@ -164,7 +164,7 @@ void init (void) {
     player.initializeSprite();
     player.setPosition(player.getPosition().posX, level.getLevelHeight());
     soundEngine = SoundEngine();
-    soundEngine.sound(0, 0, 0, "/Users/Korkesh/2D-Platformer/resources/SuperMarioBros.wav", true);
+    //soundEngine.sound(0, 0, 0, "/Users/Korkesh/2D-Platformer/resources/SuperMarioBros.wav", true);
     soundEngine.sound(0, 0, 0, "/Users/Korkesh/2D-Platformer/resources/jump.wav", false);
     
     glClearColor(0.2, 0.2, 0.6, 1.0); /* Mario Blue */
@@ -174,7 +174,7 @@ void init (void) {
  	glLoadIdentity();
     glOrtho(0, WIDTH, HEIGHT, 0, 0, 1);
     
-    soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("/Users/Korkesh/2D-Platformer/resources/SuperMarioBros.wav")->second]);
+    //soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("/Users/Korkesh/2D-Platformer/resources/SuperMarioBros.wav")->second]);
 
 }
 

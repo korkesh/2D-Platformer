@@ -38,7 +38,7 @@ Level::~Level() {
 void Level::loadLevelFromFile(const char* file) {
 	float x, y, w, h;
     int c, l;
-    const char* s = "/Users/Korkesh/2D-Platformer/resources/qBlock.png";
+    char s [255] = "";
     
 	FILE *filein;
 	char oneline[255];
@@ -51,9 +51,7 @@ void Level::loadLevelFromFile(const char* file) {
 	for (int i = 0; i < numObjects; i++)
 	{
         readstr(filein, oneline);
-        sscanf(oneline, "%f %f %f %f %d %d", &x, &y, &w, &h, &c, &l);
-        //        readstr(filein, oneline);
-        //        sscanf(oneline, "%s", s);
+        sscanf(oneline, "%f %f %f %f %d %d %s", &x, &y, &w, &h, &c, &l, s);
         objects[i] = Object(x, y, w, h, c, l, s);
 	}
     

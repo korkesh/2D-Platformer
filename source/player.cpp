@@ -9,13 +9,13 @@
 #include "player.h"
 
 Player::Player(void) {
-    playerPosition.posX = WIDTH / 2;
+    playerPosition.posX = 50.0f;
     playerPosition.posY = HEIGHT - 165;
-    playerPosition.velX = 7.0f;
+    playerPosition.velX = 5.0f;
     playerPosition.velY = 0.0f;
     
-    width = 28.0f;
-    height = 40.0f;
+    width = 14;
+    height = 20;
     
     lives = 5;
     gravity = -0.5f;
@@ -168,8 +168,8 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
     // Test for collision
     bool collide = false;
     for (int i = 0 ; i < numObjects; i++) {
-        Object currentObject = objects[i];
-        if (currentObject.collideObject(playerPosition, width / 2, height - 1.0f)) {
+        Object* currentObject = &objects[i];
+        if (currentObject->collideObject(playerPosition, width / 2, height - 1.0f)) {
             collide = true;
             if (isJumping && playerPosition.velY >= 0) {
                 if (playerState == RIGHT || playerState == LEFT) {
@@ -190,13 +190,14 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
         }
     }
     
+    
     if (!isJumping && playerPosition.posY + (height / 2) <= maxHeight && !collide) {
         playerPosition.posY -= playerPosition.velY;
         playerPosition.velY += gravity;
         
         for (int i = 0 ; i < numObjects; i++) {
-            Object currentObject = objects[i];
-            if (currentObject.collideObject(playerPosition, width / 2, height - 1.0f)) {
+            Object* currentObject = &objects[i];
+            if (currentObject->collideObject(playerPosition, width / 2, height - 1.0f)) {
                 playerPosition = previousPosition;
                 playerPosition.velY = 0.0f;
             }

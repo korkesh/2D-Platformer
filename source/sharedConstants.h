@@ -11,8 +11,8 @@
 
 #define KEY_ESC (27)
 #define KEY_SPACE (32)
-#define WIDTH (1024)
-#define HEIGHT (768)
+#define WIDTH (512)
+#define HEIGHT (384)
 #define FPS (20)
 #define PICK_BUFFER_SIZE (512)
 #define MIN_DEPTH (0xffffffff)

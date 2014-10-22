@@ -13,7 +13,7 @@ void readstr(FILE *f, char *string)
 	do
 	{
 		fgets(string, 255, f);
-	} while ((string[0] == '\n') || (string[0] == '\r'));
+	} while (((string[0] == '*') && (string[1] == '*')) || (string[0] == '\n') || (string[0] == '\r'));
     
 	return;
 }
@@ -122,7 +122,7 @@ void Level::renderLevel() {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
+
     glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_QUADS);
     glTexCoord2f(0.0f, 1.0f);
@@ -141,7 +141,7 @@ void Level::renderLevel() {
     // Grass
     glBindTexture(GL_TEXTURE_2D, levelSpriteGroundTop.getID());
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
@@ -169,16 +169,16 @@ void Level::renderLevel() {
     
     glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_QUADS);
-    glTexCoord2f(0.0f, 300.0f);
+    glTexCoord2f(0.0f, 3.0f);
     glVertex2f(0, height + 10.0f);
     
     glTexCoord2f(0.0f, 0.0f);
-    glVertex2f(0, height + 300.0f);
+    glVertex2f(0, height + 50.0f);
     
     glTexCoord2f(width / levelSpriteGroundTop.getWidth(), 0.0f);
-    glVertex2f(width, height + 300.0f);
+    glVertex2f(width, height + 50.0f);
     
-    glTexCoord2f(width / levelSpriteGroundTop.getWidth(), 300.0f);
+    glTexCoord2f(width / levelSpriteGroundTop.getWidth(), 3.0f);
     glVertex2f(width, height + 10.0f);
     glEnd();
     

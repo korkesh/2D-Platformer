@@ -24,6 +24,7 @@ class Object {
     // Toggles
     bool collide;
     bool lethal; // Levels of lethality?
+    bool render;
     
     Sprite objectSprite;
     
@@ -45,6 +46,7 @@ public:
     
     void setCollide(bool c) { collide = c; }
     void setLethal(bool l) { lethal = l; }
+    void setRender(bool r) { render = r; }
     
     void setObjectSprite(float w, float h, const char *s);
 

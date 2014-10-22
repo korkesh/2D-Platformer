@@ -77,7 +77,7 @@ void keyboard (unsigned char key, int x, int y) {
     {
         if (!player.getIsJumping()) {
             player.setIsJumping(true);
-            player.setVelY(12.0f);
+            player.setVelY(9.0f);
             //soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("/Users/Korkesh/2D-Platformer/resources/jump.wav")->second]);
         }
     }
@@ -101,7 +101,7 @@ void keyboard (unsigned char key, int x, int y) {
     {
         if (!player.getIsJumping()) {
             player.setIsJumping(true);
-            player.setVelY(12.0f);
+            player.setVelY(9.0f);
             //soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("jump.wav")->second]);
         }
     }
@@ -157,8 +157,8 @@ void enable (void) {
 //====================================================
 void init (void) {
     enable(); // Enable OpenGL Parameters
-    level = Level(0, 0, WIDTH * 3, HEIGHT - 150.0f);
-    level.setLevelSprite(WIDTH, HEIGHT - 150.0f);
+    level = Level(0, 0, WIDTH * 3, HEIGHT - 50.0f);
+    level.setLevelSprite(WIDTH, HEIGHT - 50.0f);
     level.loadLevelFromFile("level1.txt");
     player = Player();
     player.initializeSprite();
@@ -209,7 +209,7 @@ int main (int argc, char **argv) {
     // Create our Window (Initialize GLUT)
     glutInit (&argc, argv);
     glutInitDisplayMode (GLUT_DOUBLE | GLUT_DEPTH);
-    glutInitWindowSize (WIDTH, HEIGHT);
+    glutInitWindowSize (WIDTH*2, HEIGHT*2);
     glutInitWindowPosition (100, 100);
     glutCreateWindow ("First Person Shooter Game");
     

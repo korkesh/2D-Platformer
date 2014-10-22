@@ -19,8 +19,9 @@ Object::Object() {
     
     objectID = 0;
     
-    bool collide = true;
-    bool lethal = false;
+    collide = true;
+    lethal = false;
+    render = true;
     
 }
 
@@ -35,8 +36,9 @@ Object::Object(float x, float y, float w, float h, bool c, bool l, const char *s
     
     objectID = 0;
     
-    bool collide = c;
-    bool lethal = l;
+    collide = c;
+    lethal = l;
+    render = true;
 
     setObjectSprite(w, h, s);
 }
@@ -66,6 +68,10 @@ void Object::setObjectSprite(float w, float h, const char *s) {
 }
 
 void Object::renderObject(void) {
+    if (render == false) {
+        return;
+    }
+    
     glEnable(GL_TEXTURE_2D);
 	glEnable (GL_BLEND);
 	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -74,6 +80,8 @@ void Object::renderObject(void) {
     glBindTexture(GL_TEXTURE_2D, objectSprite.getID());
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     
     glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_QUADS);
@@ -137,6 +145,11 @@ bool Object::collideObject(Position playerPosition, float playerWidth, float pla
         return false;
     }
     
+    if (lethal == true) {
+        render = false;
+        collide = false;
+        return false;
+    }
     
     return true;
 }

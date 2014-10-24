@@ -21,11 +21,13 @@ Object::Object() {
     
     collide = true;
     lethal = false;
+    fallThrough = false;
+    
     render = true;
     
 }
 
-Object::Object(float x, float y, float w, float h, bool c, bool l, const char *s) {
+Object::Object(float x, float y, float w, float h, bool c, bool l, bool f, const char *s) {
     objectPosition.posX = x;
     objectPosition.posY = y;
     objectPosition.velX = 0.0f;
@@ -38,6 +40,7 @@ Object::Object(float x, float y, float w, float h, bool c, bool l, const char *s
     
     collide = c;
     lethal = l;
+    fallThrough = f;
     render = true;
 
     setObjectSprite(w, h, s);

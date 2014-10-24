@@ -84,7 +84,7 @@ void keyboard (unsigned char key, int x, int y) {
     
     if (key =='s')
     {
-        //player.setState(DOWN);
+        player.setIsCrouching(true);
     }
     
     if (key =='d')
@@ -123,8 +123,9 @@ void keyboardUp (unsigned char key, int x, int y) {
         player.setState(IDLE);
     }
     
-    if (key =='s' && player.getState() == DOWN)
+    if (key =='s' && player.getIsCrouching())
     {
+        player.setIsCrouching(false);
         player.setState(IDLE);
     }
     

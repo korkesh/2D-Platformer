@@ -22,6 +22,7 @@ Player::Player(void) {
     
     playerState = IDLE;
     isJumping = false;
+    isCrouching = false;
     
     toggleRun = true;
 }
@@ -138,6 +139,38 @@ void Player::initializeSprite() {
     {
         printf( "SOIL loading error: '%s'\n", SOIL_last_result() );
     }
+    
+    tex_2d = SOIL_load_OGL_texture
+	(
+     "marioCrouchRight.png",
+     SOIL_LOAD_AUTO,
+     SOIL_CREATE_NEW_ID,
+     SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
+     );
+    
+    playerSpriteCrouchRight = Sprite();
+    playerSpriteCrouchRight.initializeSprite(tex_2d, 0, 0, width, height);
+    
+    if( 0 == tex_2d )
+    {
+        printf( "SOIL loading error: '%s'\n", SOIL_last_result() );
+    }
+    
+    tex_2d = SOIL_load_OGL_texture
+	(
+     "marioCrouchLeft.png",
+     SOIL_LOAD_AUTO,
+     SOIL_CREATE_NEW_ID,
+     SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
+     );
+    
+    playerSpriteCrouchLeft = Sprite();
+    playerSpriteCrouchLeft.initializeSprite(tex_2d, 0, 0, width, height);
+    
+    if( 0 == tex_2d )
+    {
+        printf( "SOIL loading error: '%s'\n", SOIL_last_result() );
+    }
 }
 
 Player::~Player(void) {
@@ -148,15 +181,17 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
     
     Position previousPosition = playerPosition;
     
-    switch (playerState) {
-        case LEFT:
-            playerPosition.posX -= playerPosition.velX;
-            break;
-        case RIGHT:
-            playerPosition.posX += playerPosition.velX;
-            break;
-        default:
-            break;
+    if (!isCrouching) {
+        switch (playerState) {
+            case LEFT:
+                playerPosition.posX -= playerPosition.velX;
+                break;
+            case RIGHT:
+                playerPosition.posX += playerPosition.velX;
+                break;
+            default:
+                break;
+        }
     }
     
     // Apply Gravity
@@ -172,11 +207,19 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
         if (currentObject->collideObject(playerPosition, width / 2, height - 1.0f)) {
             collide = true;
             if (isJumping && playerPosition.velY >= 0) {
+                if (currentObject->getFallThrough()) {
+                    continue;
+                }
                 /** Reposition Player directly Under Collided Object **/
                 playerPosition = previousPosition;
                 playerPosition.posY = currentObject->getObjectPosition().posY + (currentObject->getObjectHeight() / 2) + (height / 2);
                 playerPosition.velY = 0;
             } else if (playerPosition.velY < 0) {
+                if (currentObject->getFallThrough() &&
+                    ((playerPosition.posY > (currentObject->getObjectPosition().posY + (currentObject->getObjectHeight() / 2))))) {
+                    playerPosition.posX = previousPosition.posX;
+                    continue;
+                }
                 playerPosition = previousPosition;
                // playerPosition.velY = 0.0;
                 isJumping = false;
@@ -195,6 +238,9 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
         for (int i = 0 ; i < numObjects; i++) {
             Object* currentObject = &objects[i];
             if (currentObject->collideObject(playerPosition, width / 2, height - 1.0f)) {
+                if (currentObject->getFallThrough() && isCrouching) {
+                    break;
+                }
                 playerPosition.posY = previousPosition.posY;
                 playerPosition.velY = 0.0f;
                 break;
@@ -246,12 +292,16 @@ void Player::renderPlayer(void) {
     if (playerState == IDLE) {
         if (isJumping) {
             glBindTexture(GL_TEXTURE_2D, playerSpriteJumpRight.getID());
+        } else if (isCrouching) {
+            glBindTexture(GL_TEXTURE_2D, playerSpriteCrouchRight.getID());
         } else {
             glBindTexture(GL_TEXTURE_2D, playerSpriteIdle.getID());
         }
     } else if (playerState == RIGHT) {
         if (isJumping) {
             glBindTexture(GL_TEXTURE_2D, playerSpriteJumpRight.getID());
+        } else if (isCrouching) {
+            glBindTexture(GL_TEXTURE_2D, playerSpriteCrouchRight.getID());
         } else {
             if (toggleRun) {
                 glBindTexture(GL_TEXTURE_2D, playerSpriteRunRight.getID());
@@ -270,6 +320,8 @@ void Player::renderPlayer(void) {
     } else if (playerState == LEFT) {
         if (isJumping) {
             glBindTexture(GL_TEXTURE_2D, playerSpriteJumpLeft.getID());
+        } else if (isCrouching) {
+            glBindTexture(GL_TEXTURE_2D, playerSpriteCrouchLeft.getID());
         } else {
             if (toggleRun) {
                 glBindTexture(GL_TEXTURE_2D, playerSpriteRunLeft.getID());

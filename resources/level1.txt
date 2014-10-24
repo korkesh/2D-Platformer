@@ -1,117 +1,117 @@
 NUMOBJECTS 98
 
 ** Bushes **
-100 326 64 16 0 0 bush.png
-450 326 64 16 0 0 bush.png
-1275 326 64 16 0 0 bush.png
+100 326 64 16 0 0 0 bush.png
+450 326 64 16 0 0 0 bush.png
+1275 326 64 16 0 0 0 bush.png
 
 ** ? blocks **
-220 275 16 16 1 0 qBlock.png
+220 275 16 16 1 0 0 qBlock.png
 
-236 275 16 16 1 0 block.png
+236 275 16 16 1 0 0 block.png
 
-252 275 16 16 1 0 qBlock.png
+252 275 16 16 1 0 0 qBlock.png
 
-236 225 16 16 1 0 qBlock.png
+236 225 16 16 1 0 0 qBlock.png
 
 ** First Platform **
-500 327 6 15 0 0 groundEndLeft.png
-535 327 68 15 0 0 ground.png
-603 327 68 15 0 0 ground.png
-671 327 68 15 0 0 ground.png
-708 327 6 15 0 0 groundEndRight.png
+500 327 6 15 0 0 0 groundEndLeft.png
+535 327 68 15 0 0 0 ground.png
+603 327 68 15 0 0 0 ground.png
+671 327 68 15 0 0 0 ground.png
+708 327 6 15 0 0 0 groundEndRight.png
 
-500 312 6 15 0 0 groundEndLeft.png
-535 312 68 15 0 0 ground.png
-603 312 68 15 0 0 ground.png
-671 312 68 15 0 0 ground.png
-708 312 6 15 0 0 groundEndRight.png
+500 312 6 15 0 0 0 groundEndLeft.png
+535 312 68 15 0 0 0 ground.png
+603 312 68 15 0 0 0 ground.png
+671 312 68 15 0 0 0 ground.png
+708 312 6 15 0 0 0 groundEndRight.png
 
-500 297 6 15 0 0 groundEndLeft.png
-535 297 68 15 0 0 ground.png
-603 297 68 15 0 0 ground.png
-671 297 68 15 0 0 ground.png
-708 297 6 15 0 0 groundEndRight.png
+500 297 6 15 0 0 0 groundEndLeft.png
+535 297 68 15 0 0 0 ground.png
+603 297 68 15 0 0 0 ground.png
+671 297 68 15 0 0 0 ground.png
+708 297 6 15 0 0 0 groundEndRight.png
 
-500 282 6 15 0 0 groundEndLeft.png
-535 282 68 15 0 0 ground.png
-603 282 68 15 0 0 ground.png
-671 282 68 15 0 0 ground.png
-708 282 6 15 0 0 groundEndRight.png
+500 282 6 15 0 0 0 groundEndLeft.png
+535 282 68 15 0 0 0 ground.png
+603 282 68 15 0 0 0 ground.png
+671 282 68 15 0 0 0 ground.png
+708 282 6 15 0 0 0 groundEndRight.png
 
-500 267 6 15 0 0 groundEndLeft.png
-535 267 68 15 0 0 ground.png
-603 267 68 15 0 0 ground.png
-671 267 68 15 0 0 ground.png
-708 267 6 15 0 0 groundEndRight.png
+500 267 6 15 0 0 0 groundEndLeft.png
+535 267 68 15 0 0 0 ground.png
+603 267 68 15 0 0 0 ground.png
+671 267 68 15 0 0 0 ground.png
+708 267 6 15 0 0 0 groundEndRight.png
 
-500 252 6 15 0 0 groundEndLeft.png
-535 252 68 15 0 0 ground.png
-603 252 68 15 0 0 ground.png
-671 252 68 15 0 0 ground.png
-708 252 6 15 0 0 groundEndRight.png
+500 252 6 15 0 0 0 groundEndLeft.png
+535 252 68 15 0 0 0 ground.png
+603 252 68 15 0 0 0 ground.png
+671 252 68 15 0 0 0 ground.png
+708 252 6 15 0 0 0 groundEndRight.png
 
-500 237 6 15 0 0 groundEndLeft.png
-535 237 68 15 0 0 ground.png
-603 237 68 15 0 0 ground.png
-671 237 68 15 0 0 ground.png
-708 237 6 15 0 0 groundEndRight.png
+500 237 6 15 0 0 0 groundEndLeft.png
+535 237 68 15 0 0 0 ground.png
+603 237 68 15 0 0 0 ground.png
+671 237 68 15 0 0 0 ground.png
+708 237 6 15 0 0 0 groundEndRight.png
 
-500 228 6 9 1 0 grassEndLeft.png
-535 228 68 9 1 0 grass.png
-603 228 68 9 1 0 grass.png
-671 228 68 9 1 0 grass.png
-708 228 6 9 1 0 grassEndRight.png
+500 228 6 9 1 0 1 grassEndLeft.png
+535 228 68 9 1 0 1 grass.png
+603 228 68 9 1 0 1 grass.png
+671 228 68 9 1 0 1 grass.png
+708 228 6 9 1 0 1 grassEndRight.png
 
-603 175 16 25 1 1 yoshi.png
+603 175 16 25 1 1 0 yoshi.png
 
 ** Second Platform **
-613 327 6 15 0 0 groundEndLeft.png
-648 327 68 15 0 0 ground.png
-686 327 68 15 0 0 ground.png
-722 327 6 15 0 0 groundEndRight.png
+613 327 6 15 0 0 0 groundEndLeft.png
+648 327 68 15 0 0 0 ground.png
+686 327 68 15 0 0 0 ground.png
+722 327 6 15 0 0 0 groundEndRight.png
 
-613 312 6 15 0 0 groundEndLeft.png
-648 312 68 15 0 0 ground.png
-686 312 68 15 0 0 ground.png
-722 312 6 15 0 0 groundEndRight.png
+613 312 6 15 0 0 0 groundEndLeft.png
+648 312 68 15 0 0 0 ground.png
+686 312 68 15 0 0 0 ground.png
+722 312 6 15 0 0 0 groundEndRight.png
 
-613 297 6 15 0 0 groundEndLeft.png
-648 297 68 15 0 0 ground.png
-686 297 68 15 0 0 ground.png
-722 297 6 15 0 0 groundEndRight.png
+613 297 6 15 0 0 0 groundEndLeft.png
+648 297 68 15 0 0 0 ground.png
+686 297 68 15 0 0 0 ground.png
+722 297 6 15 0 0 0 groundEndRight.png
 
-613 282 6 15 0 0 groundEndLeft.png
-648 282 68 15 0 0 ground.png
-686 282 68 15 0 0 ground.png
-722 282 6 15 0 0 groundEndRight.png
+613 282 6 15 0 0 0 groundEndLeft.png
+648 282 68 15 0 0 0 ground.png
+686 282 68 15 0 0 0 ground.png
+722 282 6 15 0 0 0 groundEndRight.png
 
-613 273 6 9 1 0 grassEndLeft.png
-648 273 68 9 1 0 grass.png
-686 273 68 9 1 0 grass.png
-722 273 6 9 1 0 grassEndRight.png
+613 273 6 9 1 0 1 grassEndLeft.png
+648 273 68 9 1 0 1 grass.png
+686 273 68 9 1 0 1 grass.png
+722 273 6 9 1 0 1 grassEndRight.png
 
 ** Third Platform **
-555 327 6 15 0 0 groundEndLeft.png
-589 327 68 15 0 0 ground.png
-622 327 6 15 0 0 groundEndRight.png
+555 327 6 15 0 0 0 groundEndLeft.png
+589 327 68 15 0 0 0 ground.png
+622 327 6 15 0 0 0 groundEndRight.png
 
-555 312 6 15 0 0 groundEndLeft.png
-589 312 68 15 0 0 ground.png
-622 312 6 15 0 0 groundEndRight.png
+555 312 6 15 0 0 0 groundEndLeft.png
+589 312 68 15 0 0 0 ground.png
+622 312 6 15 0 0 0 groundEndRight.png
 
-555 303 6 9 1 0 grassEndLeft.png
-589 303 68 9 1 0 grass.png
-622 303 6 9 1 0 grassEndRight.png
+555 303 6 9 1 0 1 grassEndLeft.png
+589 303 68 9 1 0 1 grass.png
+622 303 6 9 1 0 1 grassEndRight.png
 
 ** Bump **
-980 318 160 32 1 0 bump.png
+980 318 160 32 1 0 0 bump.png
 
 ** Pipe **
-1200 318 32 32 1 0 pipe.png
+1200 318 32 32 1 0 0 pipe.png
 
 ** Sign **
-1430 322 32 24 0 0 sign.png
+1430 322 32 24 0 0 0 sign.png
 
 ** End **
-1520 302 32 64 0 0 end.png
+1520 302 32 64 0 0 0 end.png

@@ -31,6 +31,7 @@ class Player {
     // State
     Player_State playerState;
     bool isJumping;
+    bool isCrouching;
     bool toggleRun;
     
     // Sprite
@@ -41,7 +42,9 @@ class Player {
     Sprite playerSpriteRunLeft;
     Sprite playerSpriteJumpLeft;
     Sprite playerSpriteJumpRight;
-    
+    Sprite playerSpriteCrouchLeft;
+    Sprite playerSpriteCrouchRight;
+
     // Animation
     float elapsedTime;
     
@@ -73,6 +76,9 @@ public:
     void setIsJumping(bool b) { isJumping = b; }
     bool getIsJumping(void) { return isJumping; }
 
+    void setIsCrouching(bool c) { isCrouching = c; }
+    bool getIsCrouching(void) { return isCrouching; }
+    
     void initializeSprite();
     
     //Position

@@ -24,6 +24,7 @@ class Object {
     // Toggles
     bool collide;
     bool lethal; // Levels of lethality?
+    bool fallThrough;
     bool render;
     
     Sprite objectSprite;
@@ -31,7 +32,7 @@ class Object {
 public:
     // Constructor/Destructor
     Object();
-    Object(float x, float y, float w, float h, bool c, bool l, const char *s);
+    Object(float x, float y, float w, float h, bool c, bool l, bool f, const char *s);
     ~Object();
     
     // Setters & Getters
@@ -47,6 +48,7 @@ public:
     void setCollide(bool c) { collide = c; }
     void setLethal(bool l) { lethal = l; }
     void setRender(bool r) { render = r; }
+    bool getFallThrough(void) { return fallThrough; }
     
     void setObjectSprite(float w, float h, const char *s);
 

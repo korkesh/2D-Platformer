@@ -37,7 +37,7 @@ Level::~Level() {
 
 void Level::loadLevelFromFile(const char* file) {
 	float x, y, w, h;
-    int c, l;
+    int c, l, f;
     char s [255] = "";
     
 	FILE *filein;
@@ -51,8 +51,8 @@ void Level::loadLevelFromFile(const char* file) {
 	for (int i = 0; i < numObjects; i++)
 	{
         readstr(filein, oneline);
-        sscanf(oneline, "%f %f %f %f %d %d %s", &x, &y, &w, &h, &c, &l, s);
-        objects[i] = Object(x, y, w, h, c, l, s);
+        sscanf(oneline, "%f %f %f %f %d %d %d %s", &x, &y, &w, &h, &c, &l, &f, s);
+        objects[i] = Object(x, y, w, h, c, l, f, s);
 	}
     
 	fclose(filein);

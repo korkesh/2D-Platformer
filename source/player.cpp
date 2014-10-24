@@ -172,34 +172,32 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
         if (currentObject->collideObject(playerPosition, width / 2, height - 1.0f)) {
             collide = true;
             if (isJumping && playerPosition.velY >= 0) {
-                if (playerState == RIGHT || playerState == LEFT) {
-                    playerState = IDLE;
-                }
+                /** Reposition Player directly Under Collided Object **/
                 playerPosition = previousPosition;
+                playerPosition.posY = currentObject->getObjectPosition().posY + (currentObject->getObjectHeight() / 2) + (height / 2);
                 playerPosition.velY = 0;
             } else if (playerPosition.velY < 0) {
-                if (playerState == RIGHT || playerState == LEFT) {
-                    playerState = IDLE;
-                }
                 playerPosition = previousPosition;
-                playerPosition.velY = 0;
+               // playerPosition.velY = 0.0;
                 isJumping = false;
             } else {
                 playerPosition = previousPosition;
             }
+            break;
         }
     }
     
     
-    if (!isJumping && playerPosition.posY + (height / 2) <= maxHeight && !collide) {
+    if (!isJumping && playerPosition.posY + (height / 2) < maxHeight) {
         playerPosition.posY -= playerPosition.velY;
         playerPosition.velY += gravity;
         
         for (int i = 0 ; i < numObjects; i++) {
             Object* currentObject = &objects[i];
             if (currentObject->collideObject(playerPosition, width / 2, height - 1.0f)) {
-                playerPosition = previousPosition;
+                playerPosition.posY = previousPosition.posY;
                 playerPosition.velY = 0.0f;
+                break;
             }
         }
     }

@@ -19,6 +19,11 @@
 		2F6A12B01A00A98B00CD882B /* goomba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A12AE1A00A98B00CD882B /* goomba.cpp */; };
 		2F6A12B21A00AAD500CD882B /* goombaDead.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A12B11A00AAD500CD882B /* goombaDead.png */; };
 		2F6A12B41A00AD7300CD882B /* marioCrouchLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A12B31A00AD7300CD882B /* marioCrouchLeft.png */; };
+		2F6A12B71A00BD0F00CD882B /* plant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A12B51A00BD0F00CD882B /* plant.cpp */; };
+		2F6A12BC1A00BFC600CD882B /* plantJump4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A12B81A00BFC600CD882B /* plantJump4.png */; };
+		2F6A12BD1A00BFC600CD882B /* plantJump3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A12B91A00BFC600CD882B /* plantJump3.png */; };
+		2F6A12BE1A00BFC600CD882B /* plantJump2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A12BA1A00BFC600CD882B /* plantJump2.png */; };
+		2F6A12BF1A00BFC600CD882B /* plantJump1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A12BB1A00BFC600CD882B /* plantJump1.png */; };
 		2F8A443B19EB248B00B37063 /* SOIL.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A443719EB248B00B37063 /* SOIL.c */; };
 		2F8A443C19EB248B00B37063 /* stb_image_aug.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A443819EB248B00B37063 /* stb_image_aug.c */; };
 		2F8A443D19EB248B00B37063 /* image_DXT.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A443919EB248B00B37063 /* image_DXT.c */; };
@@ -79,6 +84,12 @@
 		2F6A12AF1A00A98B00CD882B /* goomba.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = goomba.h; path = source/goomba.h; sourceTree = SOURCE_ROOT; };
 		2F6A12B11A00AAD500CD882B /* goombaDead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goombaDead.png; sourceTree = "<group>"; };
 		2F6A12B31A00AD7300CD882B /* marioCrouchLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marioCrouchLeft.png; sourceTree = "<group>"; };
+		2F6A12B51A00BD0F00CD882B /* plant.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = plant.cpp; path = source/plant.cpp; sourceTree = SOURCE_ROOT; };
+		2F6A12B61A00BD0F00CD882B /* plant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plant.h; path = source/plant.h; sourceTree = SOURCE_ROOT; };
+		2F6A12B81A00BFC600CD882B /* plantJump4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plantJump4.png; sourceTree = "<group>"; };
+		2F6A12B91A00BFC600CD882B /* plantJump3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plantJump3.png; sourceTree = "<group>"; };
+		2F6A12BA1A00BFC600CD882B /* plantJump2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plantJump2.png; sourceTree = "<group>"; };
+		2F6A12BB1A00BFC600CD882B /* plantJump1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plantJump1.png; sourceTree = "<group>"; };
 		2F8A443719EB248B00B37063 /* SOIL.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SOIL.c; path = "../Downloads/Simple OpenGL Image Library/src/SOIL.c"; sourceTree = "<group>"; };
 		2F8A443819EB248B00B37063 /* stb_image_aug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stb_image_aug.c; path = "../Downloads/Simple OpenGL Image Library/src/stb_image_aug.c"; sourceTree = "<group>"; };
 		2F8A443919EB248B00B37063 /* image_DXT.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = image_DXT.c; path = "../Downloads/Simple OpenGL Image Library/src/image_DXT.c"; sourceTree = "<group>"; };
@@ -147,6 +158,10 @@
 		2F8A444119F5A85100B37063 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F6A12B81A00BFC600CD882B /* plantJump4.png */,
+				2F6A12B91A00BFC600CD882B /* plantJump3.png */,
+				2F6A12BA1A00BFC600CD882B /* plantJump2.png */,
+				2F6A12BB1A00BFC600CD882B /* plantJump1.png */,
 				2F6A12B31A00AD7300CD882B /* marioCrouchLeft.png */,
 				2F6A12B11A00AAD500CD882B /* goombaDead.png */,
 				2F6A12A31A00A45D00CD882B /* marioDead.png */,
@@ -250,6 +265,8 @@
 				2F6A12AC1A00A97F00CD882B /* enemy.h */,
 				2F6A12AE1A00A98B00CD882B /* goomba.cpp */,
 				2F6A12AF1A00A98B00CD882B /* goomba.h */,
+				2F6A12B51A00BD0F00CD882B /* plant.cpp */,
+				2F6A12B61A00BD0F00CD882B /* plant.h */,
 				2F07093919CA181700B4D365 /* player.cpp */,
 				2F07093A19CA181700B4D365 /* player.h */,
 				2FCD3B2519787BCB001B744F /* main.mm */,
@@ -316,6 +333,7 @@
 				2F6A12B21A00AAD500CD882B /* goombaDead.png in Resources */,
 				2F8A445B19F5A85100B37063 /* qBlock.png in Resources */,
 				2F8A445A19F5A85100B37063 /* marioRunLeft.png in Resources */,
+				2F6A12BD1A00BFC600CD882B /* plantJump3.png in Resources */,
 				2F8A445319F5A85100B37063 /* jump.wav in Resources */,
 				2F8A445519F5A85100B37063 /* marioidle.png in Resources */,
 				2F8A446419F5ABFA00B37063 /* grassEndLeft.png in Resources */,
@@ -330,6 +348,7 @@
 				2F8A445C19F5A85100B37063 /* sky.png in Resources */,
 				2F8A445D19F5A85100B37063 /* SuperMarioBros.ogg in Resources */,
 				2F8A445219F5A85100B37063 /* ground.png in Resources */,
+				2F6A12BC1A00BFC600CD882B /* plantJump4.png in Resources */,
 				2F8A446519F5ABFA00B37063 /* grassEndRight.png in Resources */,
 				2F8A445819F5A85100B37063 /* marioJumpRight.png in Resources */,
 				2F6A129F1A008D7700CD882B /* goombaRun.png in Resources */,
@@ -337,8 +356,10 @@
 				2F6A129719FA1E9000CD882B /* marioCrouchRight.png in Resources */,
 				2F8A445119F5A85100B37063 /* grass.png in Resources */,
 				2F8A446E19F76CD400B37063 /* pipe.png in Resources */,
+				2F6A12BE1A00BFC600CD882B /* plantJump2.png in Resources */,
 				2F8A445F19F5A92800B37063 /* mario.png in Resources */,
 				2F8A446719F5ABFA00B37063 /* groundEndLeft.png in Resources */,
+				2F6A12BF1A00BFC600CD882B /* plantJump1.png in Resources */,
 				2F8A445619F5A85100B37063 /* marioIdleLeft.png in Resources */,
 				2F8A445019F5A85100B37063 /* backgrounds.png in Resources */,
 			);
@@ -360,6 +381,7 @@
 				2F8A443C19EB248B00B37063 /* stb_image_aug.c in Sources */,
 				2FE79B071979C7DF007FBA20 /* soundEffects.cpp in Sources */,
 				2F6A12AD1A00A97F00CD882B /* enemy.cpp in Sources */,
+				2F6A12B71A00BD0F00CD882B /* plant.cpp in Sources */,
 				2FCD3B3919787BCC001B744F /* main.mm in Sources */,
 				2F07093B19CA181700B4D365 /* player.cpp in Sources */,
 				E2639AF3190D16D900B6251A /* glew.c in Sources */,

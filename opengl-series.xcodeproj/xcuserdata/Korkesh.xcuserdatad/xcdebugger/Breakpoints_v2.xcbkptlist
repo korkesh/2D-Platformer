@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/main.mm"
-            timestampString = "435822542.316059"
+            timestampString = "436247749.839388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "init (void)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/player.cpp"
-            timestampString = "435822492.271597"
+            timestampString = "436251110.684964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects)"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -170,12 +170,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/player.cpp"
-            timestampString = "435822759.317435"
+            timestampString = "436251110.684964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
-            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects)"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
+            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -250,12 +250,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/player.cpp"
-            timestampString = "435822759.317435"
+            timestampString = "436251110.684964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects)"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
+            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -266,12 +266,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/player.cpp"
-            timestampString = "435822759.317435"
+            timestampString = "436251110.684964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
-            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects)"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
+            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -282,12 +282,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/player.cpp"
-            timestampString = "435822759.317435"
+            timestampString = "436251110.684964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects)"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
+            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/goomba.cpp"
+            timestampString = "436251701.055038"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "Goomba::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Player *player)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -14,6 +14,8 @@
 #include "sprite.h"
 #include "object.h"
 
+class Goomba;
+
 enum Player_State {IDLE, DEAD, UP, DOWN, LEFT, RIGHT};
 
 class Player {
@@ -35,6 +37,7 @@ class Player {
     bool toggleRun;
     
     // Sprite
+    Sprite playerSpriteDead;
     Sprite playerSpriteIdle;
     Sprite playerSpriteIdleRight;
     Sprite playerSpriteRunRight;
@@ -66,6 +69,14 @@ public:
     
     void setLives(int l) { lives = l; }
     void increaseLives(void) { lives += 1; }
+    void decreaseLives(void) {
+        lives -= 1;
+        if (lives == 0) {
+            playerState = DEAD;
+            isJumping = true;
+            playerPosition.velY = 5.0f;
+        }
+    }
     int getLives(void) { return lives; }
     
     float getGravity(void) { return gravity; }
@@ -82,7 +93,7 @@ public:
     void initializeSprite();
     
     //Position
-    void updatePosition(float maxWidth, float maxHeight,  Object* objects, int numObjects);
+    void updatePosition(float maxWidth, float maxHeight,  Object* objects, int numObjects, Goomba *goomba);
     
     // Render
     void renderPlayer(void);

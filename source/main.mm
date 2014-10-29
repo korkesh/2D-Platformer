@@ -1,11 +1,14 @@
 #include "sharedHeaders.h"
 #include "player.h"
 #include "level.h"
+#include "enemy.h"
+#include "goomba.h"
 
 #pragma mark Globals
 
 Player player;
 Level level;
+Goomba goomba;
 SoundEngine soundEngine;
 
 float prevXpos = 0, prevYpos = 1.5, prevZpos = 15;
@@ -45,6 +48,9 @@ void display (void) {
     // Render Scene
     level.renderLevel();
     
+    // Render Enemies
+    goomba.renderEnemy();
+    
     // Render Player
     player.renderPlayer();
 
@@ -58,7 +64,10 @@ void display (void) {
 //====================================================
 void update (int t) {
     
-    player.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects());
+    goomba.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects(), &player);
+    goomba.updateEnemyAnimation(FPS / 1000.0f);
+    
+    player.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects(), &goomba);
     player.updatePlayerAnimation(FPS / 1000.0f);
     
 	glutPostRedisplay();
@@ -161,9 +170,15 @@ void init (void) {
     level = Level(0, 0, WIDTH * 3, HEIGHT - 50.0f);
     level.setLevelSprite(WIDTH, HEIGHT - 50.0f);
     level.loadLevelFromFile("level1.txt");
+    
     player = Player();
     player.initializeSprite();
     player.setPosition(player.getPosition().posX, level.getLevelHeight());
+    
+    goomba = Goomba();
+    goomba.initializeSprite();
+    goomba.setState(eLEFT);
+    
     soundEngine = SoundEngine();
     //soundEngine.sound(0, 0, 0, "/Users/Korkesh/2D-Platformer/resources/SuperMarioBros.wav", true);
     soundEngine.sound(0, 0, 0, "jump.wav", false);

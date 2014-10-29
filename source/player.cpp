@@ -7,11 +7,12 @@
 //
 
 #include "player.h"
+#include "goomba.h"
 
 Player::Player(void) {
     playerPosition.posX = 50.0f;
     playerPosition.posY = HEIGHT - 165;
-    playerPosition.velX = 5.0f;
+    playerPosition.velX = 4.0f;
     playerPosition.velY = 0.0f;
     
     width = 14;
@@ -29,6 +30,22 @@ Player::Player(void) {
 
 void Player::initializeSprite() {
     GLuint tex_2d = SOIL_load_OGL_texture
+	(
+     "marioDead.png",
+     SOIL_LOAD_AUTO,
+     SOIL_CREATE_NEW_ID,
+     SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
+     );
+    
+    playerSpriteDead = Sprite();
+    playerSpriteDead.initializeSprite(tex_2d, 0, 0, width, height);
+    
+    if( 0 == tex_2d )
+    {
+        printf( "SOIL loading error: '%s'\n", SOIL_last_result() );
+    }
+    
+    tex_2d = SOIL_load_OGL_texture
 	(
      "marioidle.png",
      SOIL_LOAD_AUTO,
@@ -177,7 +194,7 @@ Player::~Player(void) {
     
 }
 
-void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects) {
+void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba) {
     
     Position previousPosition = playerPosition;
     
@@ -200,7 +217,11 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
         playerPosition.velY += gravity;
     }
     
-    // Test for collision
+    if (playerState == DEAD) {
+        return;
+    }
+    
+    // Test for collision with objects
     bool collide = false;
     for (int i = 0 ; i < numObjects; i++) {
         Object* currentObject = &objects[i];
@@ -230,6 +251,10 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
         }
     }
     
+    // Test collision with Goomba
+    if (goomba->collideEnemy(playerPosition, width, height) && playerPosition.velY < 0) {
+        goomba->killGoomba();
+    }
     
     if (!isJumping && playerPosition.posY + (height / 2) < maxHeight) {
         playerPosition.posY -= playerPosition.velY;
@@ -252,6 +277,7 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
     if (playerPosition.posY + (height / 2) > maxHeight) {
         playerPosition.posY = maxHeight;
         isJumping = false;
+        playerPosition.velY = 0.0f;
     }
     
     // Check Screen Boundries
@@ -305,13 +331,13 @@ void Player::renderPlayer(void) {
         } else {
             if (toggleRun) {
                 glBindTexture(GL_TEXTURE_2D, playerSpriteRunRight.getID());
-                if (elapsedTime > FPS/50) {
+                if (elapsedTime > (float)(FPS/250.0f)) {
                     toggleRun = false;
                     elapsedTime = 0.0;
                 }
             } else {
                 glBindTexture(GL_TEXTURE_2D, playerSpriteIdleRight.getID());
-                if (elapsedTime > FPS/50) {
+                if (elapsedTime > (float)(FPS/250.0f)) {
                     toggleRun = true;
                     elapsedTime = 0.0;
                 }
@@ -325,18 +351,20 @@ void Player::renderPlayer(void) {
         } else {
             if (toggleRun) {
                 glBindTexture(GL_TEXTURE_2D, playerSpriteRunLeft.getID());
-                if (elapsedTime > FPS/50) {
+                if (elapsedTime > (float)(FPS/250.0f)) {
                     toggleRun = false;
                     elapsedTime = 0.0;
                 }
             } else {
                 glBindTexture(GL_TEXTURE_2D, playerSpriteIdleLeft.getID());
-                if (elapsedTime > FPS/50) {
+                if (elapsedTime > (float)(FPS/250.0f)) {
                     toggleRun = true;
                     elapsedTime = 0.0;
                 }
             }
         }
+    } else if (playerState == DEAD) {
+        glBindTexture(GL_TEXTURE_2D, playerSpriteDead.getID());
     }
     
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);

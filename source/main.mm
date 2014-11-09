@@ -3,14 +3,18 @@
 #include "level.h"
 #include "enemy.h"
 #include "goomba.h"
+#include "koopa.h"
 #include "plant.h"
 
 #pragma mark Globals
 
 Player player;
 Level level;
+
 Goomba goomba;
 Plant plant;
+Koopa koopa;
+
 SoundEngine soundEngine;
 Object pipe;
 
@@ -50,10 +54,12 @@ void display (void) {
 
     // Render Scene
     level.renderLevel();
+    drawUI(player);
     
     // Render Enemies
     goomba.renderEnemy();
     plant.renderEnemy();
+    koopa.renderEnemy();
     pipe.renderObject();
     
     // Render Player
@@ -75,8 +81,32 @@ void update (int t) {
     plant.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects(), &player);
     plant.updateEnemyAnimation(FPS / 1000.0f);
 
-    player.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects(), &goomba);
+    koopa.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects(), &player);
+    koopa.updateEnemyAnimation(FPS / 1000.0f);
+
+    player.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects(), &goomba, &koopa);
     player.updatePlayerAnimation(FPS / 1000.0f);
+    
+    if (player.getState() == RESPAWN) {
+        player.setPosition(50.0f, level.getLevelHeight());
+        player.setState(IDLE);
+        
+        goomba = Goomba();
+        goomba.initializeSprite();
+        goomba.setState(eLEFT);
+        
+        koopa = Koopa();
+        koopa.initializeSprite();
+        koopa.setState(eRIGHT);
+        
+        plant = Plant();
+        plant.initializeSprite();
+
+    }
+    
+    if (player.getState() == GAMEOVER) {
+        exit(0); // TODO: REPLACE WITH GAMEOVER SCREEN
+    }
     
 	glutPostRedisplay();
 	glutTimerFunc(FPS, update, 0);
@@ -92,34 +122,47 @@ void update (int t) {
 void keyboard (unsigned char key, int x, int y) {
     if (key =='w')
     {
+        if (player.getState() == DEAD || player.getState() == RESPAWN) {
+            return;
+        }
         if (!player.getIsJumping()) {
             player.setIsJumping(true);
             player.setVelY(9.0f);
-            //soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("/Users/Korkesh/2D-Platformer/resources/jump.wav")->second]);
         }
     }
     
     if (key =='s')
     {
+        if (player.getState() == DEAD || player.getState() == RESPAWN) {
+            return;
+        }
         player.setIsCrouching(true);
     }
     
     if (key =='d')
     {
+        if (player.getState() == DEAD || player.getState() == RESPAWN) {
+            return;
+        }
         player.setState(RIGHT);
     }
     
     if (key =='a')
     {
+        if (player.getState() == DEAD || player.getState() == RESPAWN) {
+            return;
+        }
         player.setState(LEFT);
     }
     
     if (key == KEY_SPACE)
     {
+        if (player.getState() == DEAD || player.getState() == RESPAWN) {
+            return;
+        }
         if (!player.getIsJumping()) {
             player.setIsJumping(true);
             player.setVelY(9.0f);
-            //soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("jump.wav")->second]);
         }
     }
     
@@ -189,12 +232,15 @@ void init (void) {
     goomba.initializeSprite();
     goomba.setState(eLEFT);
     
+    koopa = Koopa();
+    koopa.initializeSprite();
+    koopa.setState(eRIGHT);
+    
     plant = Plant();
     plant.initializeSprite();
     
     soundEngine = SoundEngine();
-    //soundEngine.sound(0, 0, 0, "/Users/Korkesh/2D-Platformer/resources/SuperMarioBros.wav", true);
-    soundEngine.sound(0, 0, 0, "jump.wav", false);
+    soundEngine.sound(0, 0, 0, "SuperMarioBros.wav", true);
     
     glClearColor(0.2, 0.2, 0.6, 1.0); /* Mario Blue */
  	glViewport(0, 0, WIDTH, HEIGHT);
@@ -203,7 +249,7 @@ void init (void) {
  	glLoadIdentity();
     glOrtho(0, WIDTH, HEIGHT, 0, 0, 1);
     
-    //soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("/Users/Korkesh/2D-Platformer/resources/SuperMarioBros.wav")->second]);
+//    soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("SuperMarioBros.wav")->second]);
 
 }
 

@@ -10,29 +10,29 @@
 	<string>opengl-series</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>CFC28AD2-0068-4EC5-B850-0ECDFEABB50C</key>
+		<key>9BF62C0A40C0F4FA41985FABC51BD085C0498469</key>
 		<string>https://github.com/korkesh/2D-Platformer.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>opengl-series.xcodeproj/project.xcworkspace</string>
+	<string>opengl-series.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>CFC28AD2-0068-4EC5-B850-0ECDFEABB50C</key>
+		<key>9BF62C0A40C0F4FA41985FABC51BD085C0498469</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/korkesh/2D-Platformer.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CFC28AD2-0068-4EC5-B850-0ECDFEABB50C</string>
+	<string>9BF62C0A40C0F4FA41985FABC51BD085C0498469</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CFC28AD2-0068-4EC5-B850-0ECDFEABB50C</string>
+			<string>9BF62C0A40C0F4FA41985FABC51BD085C0498469</string>
 			<key>IDESourceControlWCCName</key>
 			<string>2D-Platformer</string>
 		</dict>

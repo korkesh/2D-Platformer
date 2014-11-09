@@ -8,7 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2F07093B19CA181700B4D365 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F07093919CA181700B4D365 /* player.cpp */; };
-		2F6A129419F8195A00CD882B /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A443F19EB249600B37063 /* libSOIL.a */; };
+		2F3D259B1A06DAB4007E6031 /* mario.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3D259A1A06DAB4007E6031 /* mario.png */; };
+		2F3D25A51A0969B0007E6031 /* koopaTurnLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3D259F1A0969B0007E6031 /* koopaTurnLeft.png */; };
+		2F3D25A61A0969B0007E6031 /* koopaTurnRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3D25A01A0969B0007E6031 /* koopaTurnRight.png */; };
+		2F3D25A71A0969B0007E6031 /* koopaWalkLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3D25A11A0969B0007E6031 /* koopaWalkLeft.png */; };
+		2F3D25A81A0969B0007E6031 /* koopaWalkRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3D25A21A0969B0007E6031 /* koopaWalkRight.png */; };
+		2F3D25A91A0969B0007E6031 /* koopaIdleLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3D25A31A0969B0007E6031 /* koopaIdleLeft.png */; };
+		2F3D25AA1A0969B0007E6031 /* koopaIdleRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3D25A41A0969B0007E6031 /* koopaIdleRight.png */; };
 		2F6A129719FA1E9000CD882B /* marioCrouchRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A129519FA1E9000CD882B /* marioCrouchRight.png */; };
 		2F6A129E1A008D7700CD882B /* goombaIdle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A129C1A008D7700CD882B /* goombaIdle.png */; };
 		2F6A129F1A008D7700CD882B /* goombaRun.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A129D1A008D7700CD882B /* goombaRun.png */; };
@@ -42,7 +48,6 @@
 		2F8A445B19F5A85100B37063 /* qBlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A444D19F5A85100B37063 /* qBlock.png */; };
 		2F8A445C19F5A85100B37063 /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A444E19F5A85100B37063 /* sky.png */; };
 		2F8A445D19F5A85100B37063 /* SuperMarioBros.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A444F19F5A85100B37063 /* SuperMarioBros.ogg */; };
-		2F8A445F19F5A92800B37063 /* mario.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A445E19F5A92800B37063 /* mario.png */; };
 		2F8A446419F5ABFA00B37063 /* grassEndLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A446019F5ABFA00B37063 /* grassEndLeft.png */; };
 		2F8A446519F5ABFA00B37063 /* grassEndRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A446119F5ABFA00B37063 /* grassEndRight.png */; };
 		2F8A446619F5ABFA00B37063 /* groundEndRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A446219F5ABFA00B37063 /* groundEndRight.png */; };
@@ -60,6 +65,13 @@
 		2FCD3B4019787BCC001B744F /* UI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD3B3219787BCC001B744F /* UI.cpp */; };
 		2FCD3B4219787C5C001B744F /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD3B4119787C5C001B744F /* GLUT.framework */; };
 		2FCD3B4419787C61001B744F /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD3B4319787C61001B744F /* OpenAL.framework */; };
+		2FE32E791A096E530029C57D /* koopa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FE32E781A096E530029C57D /* koopa.cpp */; };
+		2FE32E7B1A096F530029C57D /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FE32E7A1A096F530029C57D /* libSOIL.a */; };
+		2FE32E801A0D8F2E0029C57D /* koopaShell4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE32E7C1A0D8F2E0029C57D /* koopaShell4.png */; };
+		2FE32E811A0D8F2E0029C57D /* koopaShell3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE32E7D1A0D8F2E0029C57D /* koopaShell3.png */; };
+		2FE32E821A0D8F2E0029C57D /* koopaShell2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE32E7E1A0D8F2E0029C57D /* koopaShell2.png */; };
+		2FE32E831A0D8F2E0029C57D /* koopaShell1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE32E7F1A0D8F2E0029C57D /* koopaShell1.png */; };
+		2FE32E851A0ECF940029C57D /* SuperMarioBros.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2FE32E841A0ECF940029C57D /* SuperMarioBros.wav */; };
 		2FE79B071979C7DF007FBA20 /* soundEffects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FE79B051979C7DF007FBA20 /* soundEffects.cpp */; };
 		E2639AE8190D169200B6251A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2639AE7190D169200B6251A /* OpenGL.framework */; };
 		E2639AF3190D16D900B6251A /* glew.c in Sources */ = {isa = PBXBuildFile; fileRef = E2639AF2190D16D900B6251A /* glew.c */; };
@@ -70,6 +82,13 @@
 		2F07093819C966FD00B4D365 /* sharedHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = sharedHeaders.h; path = source/sharedHeaders.h; sourceTree = SOURCE_ROOT; };
 		2F07093919CA181700B4D365 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = player.cpp; path = source/player.cpp; sourceTree = SOURCE_ROOT; };
 		2F07093A19CA181700B4D365 /* player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = player.h; path = source/player.h; sourceTree = SOURCE_ROOT; };
+		2F3D259A1A06DAB4007E6031 /* mario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mario.png; sourceTree = "<group>"; };
+		2F3D259F1A0969B0007E6031 /* koopaTurnLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = koopaTurnLeft.png; sourceTree = "<group>"; };
+		2F3D25A01A0969B0007E6031 /* koopaTurnRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = koopaTurnRight.png; sourceTree = "<group>"; };
+		2F3D25A11A0969B0007E6031 /* koopaWalkLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = koopaWalkLeft.png; sourceTree = "<group>"; };
+		2F3D25A21A0969B0007E6031 /* koopaWalkRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = koopaWalkRight.png; sourceTree = "<group>"; };
+		2F3D25A31A0969B0007E6031 /* koopaIdleLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = koopaIdleLeft.png; sourceTree = "<group>"; };
+		2F3D25A41A0969B0007E6031 /* koopaIdleRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = koopaIdleRight.png; sourceTree = "<group>"; };
 		2F6A129519FA1E9000CD882B /* marioCrouchRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marioCrouchRight.png; sourceTree = "<group>"; };
 		2F6A129C1A008D7700CD882B /* goombaIdle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goombaIdle.png; sourceTree = "<group>"; };
 		2F6A129D1A008D7700CD882B /* goombaRun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goombaRun.png; sourceTree = "<group>"; };
@@ -94,7 +113,6 @@
 		2F8A443819EB248B00B37063 /* stb_image_aug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stb_image_aug.c; path = "../Downloads/Simple OpenGL Image Library/src/stb_image_aug.c"; sourceTree = "<group>"; };
 		2F8A443919EB248B00B37063 /* image_DXT.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = image_DXT.c; path = "../Downloads/Simple OpenGL Image Library/src/image_DXT.c"; sourceTree = "<group>"; };
 		2F8A443A19EB248B00B37063 /* image_helper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = image_helper.c; path = "../Downloads/Simple OpenGL Image Library/src/image_helper.c"; sourceTree = "<group>"; };
-		2F8A443F19EB249600B37063 /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = "../Downloads/Simple OpenGL Image Library/lib/libSOIL.a"; sourceTree = "<group>"; };
 		2F8A444219F5A85100B37063 /* backgrounds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgrounds.png; sourceTree = "<group>"; };
 		2F8A444319F5A85100B37063 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
 		2F8A444419F5A85100B37063 /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
@@ -109,7 +127,6 @@
 		2F8A444D19F5A85100B37063 /* qBlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qBlock.png; sourceTree = "<group>"; };
 		2F8A444E19F5A85100B37063 /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
 		2F8A444F19F5A85100B37063 /* SuperMarioBros.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = SuperMarioBros.ogg; sourceTree = "<group>"; };
-		2F8A445E19F5A92800B37063 /* mario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mario.png; path = ../../Desktop/mario.png; sourceTree = "<group>"; };
 		2F8A446019F5ABFA00B37063 /* grassEndLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grassEndLeft.png; sourceTree = "<group>"; };
 		2F8A446119F5ABFA00B37063 /* grassEndRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grassEndRight.png; sourceTree = "<group>"; };
 		2F8A446219F5ABFA00B37063 /* groundEndRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = groundEndRight.png; sourceTree = "<group>"; };
@@ -130,6 +147,14 @@
 		2FCD3B3319787BCC001B744F /* UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UI.h; path = source/UI.h; sourceTree = SOURCE_ROOT; };
 		2FCD3B4119787C5C001B744F /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		2FCD3B4319787C61001B744F /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		2FE32E771A096E530029C57D /* koopa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = koopa.h; path = source/koopa.h; sourceTree = SOURCE_ROOT; };
+		2FE32E781A096E530029C57D /* koopa.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = koopa.cpp; path = source/koopa.cpp; sourceTree = SOURCE_ROOT; };
+		2FE32E7A1A096F530029C57D /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = "../Downloads/Simple OpenGL Image Library/lib/libSOIL.a"; sourceTree = "<group>"; };
+		2FE32E7C1A0D8F2E0029C57D /* koopaShell4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = koopaShell4.png; sourceTree = "<group>"; };
+		2FE32E7D1A0D8F2E0029C57D /* koopaShell3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = koopaShell3.png; sourceTree = "<group>"; };
+		2FE32E7E1A0D8F2E0029C57D /* koopaShell2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = koopaShell2.png; sourceTree = "<group>"; };
+		2FE32E7F1A0D8F2E0029C57D /* koopaShell1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = koopaShell1.png; sourceTree = "<group>"; };
+		2FE32E841A0ECF940029C57D /* SuperMarioBros.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SuperMarioBros.wav; sourceTree = "<group>"; };
 		2FE79B051979C7DF007FBA20 /* soundEffects.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = soundEffects.cpp; path = source/soundEffects.cpp; sourceTree = SOURCE_ROOT; };
 		2FE79B061979C7DF007FBA20 /* soundEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = soundEffects.h; path = source/soundEffects.h; sourceTree = SOURCE_ROOT; };
 		E263994D190D148400B6251A /* 01_project_skeleton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 01_project_skeleton.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,9 +170,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F6A129419F8195A00CD882B /* libSOIL.a in Frameworks */,
 				2FCD3B4419787C61001B744F /* OpenAL.framework in Frameworks */,
 				2FCD3B4219787C5C001B744F /* GLUT.framework in Frameworks */,
+				2FE32E7B1A096F530029C57D /* libSOIL.a in Frameworks */,
 				E2639AE8190D169200B6251A /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +183,17 @@
 		2F8A444119F5A85100B37063 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				2FE32E7C1A0D8F2E0029C57D /* koopaShell4.png */,
+				2FE32E7D1A0D8F2E0029C57D /* koopaShell3.png */,
+				2FE32E7E1A0D8F2E0029C57D /* koopaShell2.png */,
+				2FE32E7F1A0D8F2E0029C57D /* koopaShell1.png */,
+				2F3D259F1A0969B0007E6031 /* koopaTurnLeft.png */,
+				2F3D25A01A0969B0007E6031 /* koopaTurnRight.png */,
+				2F3D25A11A0969B0007E6031 /* koopaWalkLeft.png */,
+				2F3D25A21A0969B0007E6031 /* koopaWalkRight.png */,
+				2F3D25A31A0969B0007E6031 /* koopaIdleLeft.png */,
+				2F3D25A41A0969B0007E6031 /* koopaIdleRight.png */,
+				2F3D259A1A06DAB4007E6031 /* mario.png */,
 				2F6A12B81A00BFC600CD882B /* plantJump4.png */,
 				2F6A12B91A00BFC600CD882B /* plantJump3.png */,
 				2F6A12BA1A00BFC600CD882B /* plantJump2.png */,
@@ -179,7 +215,6 @@
 				2F8A446119F5ABFA00B37063 /* grassEndRight.png */,
 				2F8A446219F5ABFA00B37063 /* groundEndRight.png */,
 				2F8A446319F5ABFA00B37063 /* groundEndLeft.png */,
-				2F8A445E19F5A92800B37063 /* mario.png */,
 				2F8A444219F5A85100B37063 /* backgrounds.png */,
 				2F8A444319F5A85100B37063 /* grass.png */,
 				2F8A444419F5A85100B37063 /* ground.png */,
@@ -193,6 +228,7 @@
 				2F8A444C19F5A85100B37063 /* marioRunLeft.png */,
 				2F8A444D19F5A85100B37063 /* qBlock.png */,
 				2F8A444E19F5A85100B37063 /* sky.png */,
+				2FE32E841A0ECF940029C57D /* SuperMarioBros.wav */,
 				2F8A444F19F5A85100B37063 /* SuperMarioBros.ogg */,
 			);
 			path = resources;
@@ -229,7 +265,7 @@
 		E263994F190D148400B6251A /* thirdparty */ = {
 			isa = PBXGroup;
 			children = (
-				2F8A443F19EB249600B37063 /* libSOIL.a */,
+				2FE32E7A1A096F530029C57D /* libSOIL.a */,
 				2F8A443719EB248B00B37063 /* SOIL.c */,
 				2F8A443819EB248B00B37063 /* stb_image_aug.c */,
 				2F8A443919EB248B00B37063 /* image_DXT.c */,
@@ -267,6 +303,8 @@
 				2F6A12AF1A00A98B00CD882B /* goomba.h */,
 				2F6A12B51A00BD0F00CD882B /* plant.cpp */,
 				2F6A12B61A00BD0F00CD882B /* plant.h */,
+				2FE32E781A096E530029C57D /* koopa.cpp */,
+				2FE32E771A096E530029C57D /* koopa.h */,
 				2F07093919CA181700B4D365 /* player.cpp */,
 				2F07093A19CA181700B4D365 /* player.h */,
 				2FCD3B2519787BCB001B744F /* main.mm */,
@@ -326,6 +364,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F3D259B1A06DAB4007E6031 /* mario.png in Resources */,
 				2F8A446919F6E67F00B37063 /* yoshi.png in Resources */,
 				2F8A447419F772E700B37063 /* bush.png in Resources */,
 				2F8A447519F772E700B37063 /* sign.png in Resources */,
@@ -336,6 +375,8 @@
 				2F6A12BD1A00BFC600CD882B /* plantJump3.png in Resources */,
 				2F8A445319F5A85100B37063 /* jump.wav in Resources */,
 				2F8A445519F5A85100B37063 /* marioidle.png in Resources */,
+				2FE32E801A0D8F2E0029C57D /* koopaShell4.png in Resources */,
+				2F3D25A51A0969B0007E6031 /* koopaTurnLeft.png in Resources */,
 				2F8A446419F5ABFA00B37063 /* grassEndLeft.png in Resources */,
 				2F8A445719F5A85100B37063 /* marioJumpLeft.png in Resources */,
 				2F6A12A41A00A45D00CD882B /* marioDead.png in Resources */,
@@ -343,22 +384,30 @@
 				2F6A12B41A00AD7300CD882B /* marioCrouchLeft.png in Resources */,
 				2F6A129E1A008D7700CD882B /* goombaIdle.png in Resources */,
 				2F8A447119F7712800B37063 /* end.png in Resources */,
+				2F3D25AA1A0969B0007E6031 /* koopaIdleRight.png in Resources */,
 				2F8A446F19F76CD400B37063 /* bump.png in Resources */,
 				2F8A445919F5A85100B37063 /* marioRun.png in Resources */,
+				2FE32E831A0D8F2E0029C57D /* koopaShell1.png in Resources */,
 				2F8A445C19F5A85100B37063 /* sky.png in Resources */,
 				2F8A445D19F5A85100B37063 /* SuperMarioBros.ogg in Resources */,
 				2F8A445219F5A85100B37063 /* ground.png in Resources */,
+				2FE32E821A0D8F2E0029C57D /* koopaShell2.png in Resources */,
 				2F6A12BC1A00BFC600CD882B /* plantJump4.png in Resources */,
+				2FE32E811A0D8F2E0029C57D /* koopaShell3.png in Resources */,
 				2F8A446519F5ABFA00B37063 /* grassEndRight.png in Resources */,
 				2F8A445819F5A85100B37063 /* marioJumpRight.png in Resources */,
+				2FE32E851A0ECF940029C57D /* SuperMarioBros.wav in Resources */,
 				2F6A129F1A008D7700CD882B /* goombaRun.png in Resources */,
 				2F8A446619F5ABFA00B37063 /* groundEndRight.png in Resources */,
 				2F6A129719FA1E9000CD882B /* marioCrouchRight.png in Resources */,
 				2F8A445119F5A85100B37063 /* grass.png in Resources */,
 				2F8A446E19F76CD400B37063 /* pipe.png in Resources */,
+				2F3D25A71A0969B0007E6031 /* koopaWalkLeft.png in Resources */,
+				2F3D25A91A0969B0007E6031 /* koopaIdleLeft.png in Resources */,
 				2F6A12BE1A00BFC600CD882B /* plantJump2.png in Resources */,
-				2F8A445F19F5A92800B37063 /* mario.png in Resources */,
 				2F8A446719F5ABFA00B37063 /* groundEndLeft.png in Resources */,
+				2F3D25A61A0969B0007E6031 /* koopaTurnRight.png in Resources */,
+				2F3D25A81A0969B0007E6031 /* koopaWalkRight.png in Resources */,
 				2F6A12BF1A00BFC600CD882B /* plantJump1.png in Resources */,
 				2F8A445619F5A85100B37063 /* marioIdleLeft.png in Resources */,
 				2F8A445019F5A85100B37063 /* backgrounds.png in Resources */,
@@ -378,6 +427,7 @@
 				2F8A443E19EB248B00B37063 /* image_helper.c in Sources */,
 				2FCD3B3419787BCC001B744F /* algebra.cpp in Sources */,
 				2F8A443B19EB248B00B37063 /* SOIL.c in Sources */,
+				2FE32E791A096E530029C57D /* koopa.cpp in Sources */,
 				2F8A443C19EB248B00B37063 /* stb_image_aug.c in Sources */,
 				2FE79B071979C7DF007FBA20 /* soundEffects.cpp in Sources */,
 				2F6A12AD1A00A97F00CD882B /* enemy.cpp in Sources */,
@@ -439,6 +489,14 @@
 					OpenGL,
 					Image,
 					Library/lib,
+					/Users/Korkesh/Downloads/Simple,
+					OpenGL,
+					Image,
+					Library/lib,
+					/Users/Korkesh/Downloads/Simple,
+					OpenGL,
+					Image,
+					Library/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = 01_project_skeleton;
@@ -456,6 +514,14 @@
 					"$(PROJECT_DIR)",
 					"/Users/Korkesh/Downloads/SimpleOpenGLImageLibrary/lib/**",
 					/Users/Korkesh/Downloads/SimpleOpenGLImageLibrary/lib,
+					/Users/Korkesh/Downloads/Simple,
+					OpenGL,
+					Image,
+					Library/lib,
+					/Users/Korkesh/Downloads/Simple,
+					OpenGL,
+					Image,
+					Library/lib,
 					/Users/Korkesh/Downloads/Simple,
 					OpenGL,
 					Image,

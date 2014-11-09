@@ -12,11 +12,12 @@
 #include <iostream>
 #include "sharedHeaders.h"
 #include "sprite.h"
-#include "object.h"
 
+class Object;
 class Goomba;
+class Koopa;
 
-enum Player_State {IDLE, DEAD, UP, DOWN, LEFT, RIGHT};
+enum Player_State {IDLE, DEAD, UP, DOWN, LEFT, RIGHT, RESPAWN, GAMEOVER};
 
 class Player {
     // Position
@@ -70,11 +71,13 @@ public:
     void setLives(int l) { lives = l; }
     void increaseLives(void) { lives += 1; }
     void decreaseLives(void) {
+        if (playerState == DEAD) return;
         lives -= 1;
+        playerState = DEAD;
+        isJumping = true;
+        playerPosition.velY = 5.0f;
         if (lives == 0) {
-            playerState = DEAD;
-            isJumping = true;
-            playerPosition.velY = 5.0f;
+            playerState = GAMEOVER;
         }
     }
     int getLives(void) { return lives; }
@@ -93,7 +96,7 @@ public:
     void initializeSprite();
     
     //Position
-    void updatePosition(float maxWidth, float maxHeight,  Object* objects, int numObjects, Goomba *goomba);
+    void updatePosition(float maxWidth, float maxHeight,  Object* objects, int numObjects, Goomba *goomba, Koopa *koopa);
     
     // Render
     void renderPlayer(void);

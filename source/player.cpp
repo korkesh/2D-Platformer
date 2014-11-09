@@ -8,6 +8,7 @@
 
 #include "player.h"
 #include "goomba.h"
+#include "koopa.h"
 
 Player::Player(void) {
     playerPosition.posX = 50.0f;
@@ -194,7 +195,7 @@ Player::~Player(void) {
     
 }
 
-void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba) {
+void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba, Koopa *koopa) {
     
     Position previousPosition = playerPosition;
     
@@ -218,6 +219,9 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
     }
     
     if (playerState == DEAD) {
+        if (playerPosition.posY > HEIGHT) {
+            playerState = RESPAWN;
+        }
         return;
     }
     
@@ -256,6 +260,13 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
         goomba->killGoomba();
     }
     
+    if (koopa->collideEnemy(playerPosition, width, height) && playerPosition.velY < 0) {
+        koopa->killKoopa(playerState);
+        isJumping = true;
+        playerPosition.velY = 8.0f;
+        return;
+    }
+    
     if (!isJumping && playerPosition.posY + (height / 2) < maxHeight) {
         playerPosition.posY -= playerPosition.velY;
         playerPosition.velY += gravity;
@@ -263,9 +274,6 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
         for (int i = 0 ; i < numObjects; i++) {
             Object* currentObject = &objects[i];
             if (currentObject->collideObject(playerPosition, width / 2, height - 1.0f)) {
-                if (currentObject->getFallThrough() && isCrouching) {
-                    break;
-                }
                 playerPosition.posY = previousPosition.posY;
                 playerPosition.velY = 0.0f;
                 break;

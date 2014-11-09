@@ -10,9 +10,12 @@
 #define __openGLTutorial__UI__
 
 #include <iostream>
+#include "sharedHeaders.h"
+
+class Player;
 
 extern int score;
-void drawUI();
+void drawUI(Player &player);
 void drawMenu();
 
 #endif /* defined(__openGLTutorial__UI__) */

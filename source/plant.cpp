@@ -101,6 +101,10 @@ void Plant::updatePosition(float maxWidth, float maxHeight, Object* objects, int
     if (isJumping) {
         enemyPosition.posY -= enemyPosition.velY;
         enemyPosition.velY += gravity;
+        
+        if (enemyPosition.velY < 0) {
+            gravity = -0.01f;
+        }
     }
     
     if (enemyState == eDEAD) {
@@ -113,9 +117,10 @@ void Plant::updatePosition(float maxWidth, float maxHeight, Object* objects, int
     }
     
     // Check Boundry
-    if (enemyPosition.posY + (height / 2) > maxHeight) {
+    if (enemyPosition.posY + (height / 2) > maxHeight - 7.0f) {
         isJumping = true;
         enemyPosition.velY = 8.0f;
+        gravity = -0.5f;
     }
     
 }

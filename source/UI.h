@@ -17,5 +17,8 @@ class Player;
 extern int score;
 void drawUI(Player &player);
 void drawMenu();
+void drawDeath(Player &player);
+void drawGameOver(void);
+void drawWin(Player &player);
 
 #endif /* defined(__openGLTutorial__UI__) */

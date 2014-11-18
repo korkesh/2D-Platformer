@@ -30,6 +30,8 @@ class Player {
     // Misc
     int lives;
     float gravity;
+    int playerScore;
+    int coins;
     
     // State
     Player_State playerState;
@@ -84,6 +86,12 @@ public:
     
     float getGravity(void) { return gravity; }
     
+    void setPlayerScore(int s) { playerScore = s; }
+    int getPlayerScore(void) { return playerScore; }
+
+    void setCoins(int s) { coins = s; }
+    int getCoins(void) {return coins; }
+    
     void setState(Player_State state) { playerState = state; }
     Player_State getState(void) { return playerState; }
     
@@ -96,7 +104,7 @@ public:
     void initializeSprite();
     
     //Position
-    void updatePosition(float maxWidth, float maxHeight,  Object* objects, int numObjects, Goomba *goomba, Koopa *koopa);
+    void updatePosition(float maxWidth, float maxHeight,  Object* objects, int numObjects, Goomba *goomba, Goomba *goomba2, Koopa *koopa);
     
     // Render
     void renderPlayer(void);

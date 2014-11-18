@@ -131,10 +131,10 @@ void Level::renderLevel() {
     glTexCoord2f(0.0f, 0.0f);
     glVertex2f(0.0f, height);
     
-    glTexCoord2f(3.0f, 0.0f);
+    glTexCoord2f(4.0f, 0.0f);
     glVertex2f(width, height);
     
-    glTexCoord2f(3.0f, 1.0f);
+    glTexCoord2f(4.0f, 1.0f);
     glVertex2f(width, 0.0f);
     glEnd();
     

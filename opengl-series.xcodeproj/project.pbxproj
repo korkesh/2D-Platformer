@@ -72,6 +72,8 @@
 		2FE32E821A0D8F2E0029C57D /* koopaShell2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE32E7E1A0D8F2E0029C57D /* koopaShell2.png */; };
 		2FE32E831A0D8F2E0029C57D /* koopaShell1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE32E7F1A0D8F2E0029C57D /* koopaShell1.png */; };
 		2FE32E851A0ECF940029C57D /* SuperMarioBros.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2FE32E841A0ECF940029C57D /* SuperMarioBros.wav */; };
+		2FE32E871A11F5D60029C57D /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE32E861A11F5D60029C57D /* title.png */; };
+		2FE32E891A15F2A00029C57D /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE32E881A15F29F0029C57D /* door.png */; };
 		2FE79B071979C7DF007FBA20 /* soundEffects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FE79B051979C7DF007FBA20 /* soundEffects.cpp */; };
 		E2639AE8190D169200B6251A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2639AE7190D169200B6251A /* OpenGL.framework */; };
 		E2639AF3190D16D900B6251A /* glew.c in Sources */ = {isa = PBXBuildFile; fileRef = E2639AF2190D16D900B6251A /* glew.c */; };
@@ -155,6 +157,8 @@
 		2FE32E7E1A0D8F2E0029C57D /* koopaShell2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = koopaShell2.png; sourceTree = "<group>"; };
 		2FE32E7F1A0D8F2E0029C57D /* koopaShell1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = koopaShell1.png; sourceTree = "<group>"; };
 		2FE32E841A0ECF940029C57D /* SuperMarioBros.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SuperMarioBros.wav; sourceTree = "<group>"; };
+		2FE32E861A11F5D60029C57D /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
+		2FE32E881A15F29F0029C57D /* door.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door.png; sourceTree = "<group>"; };
 		2FE79B051979C7DF007FBA20 /* soundEffects.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = soundEffects.cpp; path = source/soundEffects.cpp; sourceTree = SOURCE_ROOT; };
 		2FE79B061979C7DF007FBA20 /* soundEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = soundEffects.h; path = source/soundEffects.h; sourceTree = SOURCE_ROOT; };
 		E263994D190D148400B6251A /* 01_project_skeleton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 01_project_skeleton.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +187,8 @@
 		2F8A444119F5A85100B37063 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				2FE32E881A15F29F0029C57D /* door.png */,
+				2FE32E861A11F5D60029C57D /* title.png */,
 				2FE32E7C1A0D8F2E0029C57D /* koopaShell4.png */,
 				2FE32E7D1A0D8F2E0029C57D /* koopaShell3.png */,
 				2FE32E7E1A0D8F2E0029C57D /* koopaShell2.png */,
@@ -378,6 +384,7 @@
 				2FE32E801A0D8F2E0029C57D /* koopaShell4.png in Resources */,
 				2F3D25A51A0969B0007E6031 /* koopaTurnLeft.png in Resources */,
 				2F8A446419F5ABFA00B37063 /* grassEndLeft.png in Resources */,
+				2FE32E871A11F5D60029C57D /* title.png in Resources */,
 				2F8A445719F5A85100B37063 /* marioJumpLeft.png in Resources */,
 				2F6A12A41A00A45D00CD882B /* marioDead.png in Resources */,
 				2F8A446B19F760D700B37063 /* block.png in Resources */,
@@ -396,6 +403,7 @@
 				2FE32E811A0D8F2E0029C57D /* koopaShell3.png in Resources */,
 				2F8A446519F5ABFA00B37063 /* grassEndRight.png in Resources */,
 				2F8A445819F5A85100B37063 /* marioJumpRight.png in Resources */,
+				2FE32E891A15F2A00029C57D /* door.png in Resources */,
 				2FE32E851A0ECF940029C57D /* SuperMarioBros.wav in Resources */,
 				2F6A129F1A008D7700CD882B /* goombaRun.png in Resources */,
 				2F8A446619F5ABFA00B37063 /* groundEndRight.png in Resources */,

@@ -12,6 +12,7 @@ Player player;
 Level level;
 
 Goomba goomba;
+Goomba goomba2;
 Plant plant;
 Koopa koopa;
 
@@ -23,6 +24,14 @@ float lastx = WIDTH/2, lasty = HEIGHT/2;
 
 float xpos = 0.0f, ypos = 0.0, zpos = 0.0;
 
+bool displayMenu = true;
+bool displayRespawn = false;
+bool displayGameOver = false;
+bool displayWin = false;
+float deathTime = 0.0f;
+
+
+void init (void);
 
 #pragma mark Render & Update
 
@@ -49,23 +58,40 @@ void display (void) {
  	glMatrixMode(GL_MODELVIEW);
  	glLoadIdentity();
     
-    // Adjust Camera
-    camera();
-
-    // Render Scene
-    level.renderLevel();
-    drawUI(player);
-    
-    // Render Enemies
-    goomba.renderEnemy();
-    plant.renderEnemy();
-    koopa.renderEnemy();
-    pipe.renderObject();
-    
-    // Render Player
-    player.renderPlayer();
-
-    glutSwapBuffers(); //swap the buffers
+    if (displayMenu) {
+        level.renderLevel();
+        drawMenu();
+        glutSwapBuffers();
+    } else if (displayRespawn) {
+        drawDeath(player);
+        glutSwapBuffers();
+    } else if (displayGameOver) {
+        drawGameOver();
+        glutSwapBuffers();
+    } else if (displayWin) {
+        level.renderLevel();
+        drawWin(player);
+        glutSwapBuffers();
+    } else {
+        // Adjust Camera
+        camera();
+        
+        // Render Scene
+        level.renderLevel();
+        drawUI(player);
+        
+        // Render Enemies
+        goomba.renderEnemy();
+        goomba2.renderEnemy();
+        plant.renderEnemy();
+        koopa.renderEnemy();
+        pipe.renderObject();
+        
+        // Render Player
+        player.renderPlayer();
+        
+        glutSwapBuffers(); //swap the buffers
+    }
 }
 
 //====================================================
@@ -74,38 +100,73 @@ void display (void) {
 // Input: 0
 //====================================================
 void update (int t) {
-    
-    goomba.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects(), &player);
-    goomba.updateEnemyAnimation(FPS / 1000.0f);
-    
-    plant.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects(), &player);
-    plant.updateEnemyAnimation(FPS / 1000.0f);
-
-    koopa.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects(), &player);
-    koopa.updateEnemyAnimation(FPS / 1000.0f);
-
-    player.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects(), &goomba, &koopa);
-    player.updatePlayerAnimation(FPS / 1000.0f);
-    
-    if (player.getState() == RESPAWN) {
-        player.setPosition(50.0f, level.getLevelHeight());
-        player.setState(IDLE);
-        
-        goomba = Goomba();
-        goomba.initializeSprite();
-        goomba.setState(eLEFT);
-        
-        koopa = Koopa();
-        koopa.initializeSprite();
-        koopa.setState(eRIGHT);
-        
-        plant = Plant();
-        plant.initializeSprite();
-
+    if (displayRespawn) {
+        deathTime += FPS / 1000.0f;
+        if (deathTime < 1000000000) {
+            deathTime -= (int)deathTime;
+        }
+        else {
+            deathTime = 0;
+        }
     }
     
-    if (player.getState() == GAMEOVER) {
-        exit(0); // TODO: REPLACE WITH GAMEOVER SCREEN
+    if (deathTime > 0.9f && displayRespawn) {
+        deathTime = 0;
+        displayRespawn = false;
+    }
+    
+    if (!displayMenu && !displayRespawn & !displayGameOver) {
+        goomba.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects(), &player);
+        goomba.updateEnemyAnimation(FPS / 1000.0f);
+        
+        goomba2.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects(), &player);
+        goomba2.updateEnemyAnimation(FPS / 1000.0f);
+        
+        plant.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects(), &player);
+        plant.updateEnemyAnimation(FPS / 1000.0f);
+        
+        koopa.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects(), &player);
+        koopa.updateEnemyAnimation(FPS / 1000.0f);
+        
+        player.updatePosition(level.getLevelWidth(), level.getLevelHeight(), level.getObjects(), level.getNumObjects(), &goomba, &goomba2, &koopa);
+        player.updatePlayerAnimation(FPS / 1000.0f);
+        
+        if (player.getCoins() >= 3) {
+            displayWin = true;
+        }
+        
+        if (player.getState() == RESPAWN) {
+            displayRespawn = true;
+            deathTime = 0.0f;
+            
+            level.loadLevelFromFile("level1.txt");
+            
+            player.setPosition(50.0f, level.getLevelHeight());
+            player.setState(IDLE);
+            player.setPlayerScore(0);
+            player.setCoins(0);
+            
+            goomba = Goomba();
+            goomba.initializeSprite();
+            goomba.setState(eLEFT);
+            
+            goomba2 = Goomba();
+            goomba2.initializeSprite();
+            goomba2.setState(eLEFT);
+            goomba2.setPosition(250.0f, 259.0f);
+
+            koopa = Koopa();
+            koopa.initializeSprite();
+            koopa.setState(eRIGHT);
+            
+            plant = Plant();
+            plant.initializeSprite();
+            
+        }
+        
+        if (player.getState() == GAMEOVER) {
+            displayGameOver = true;
+        }
     }
     
 	glutPostRedisplay();
@@ -120,6 +181,83 @@ void update (int t) {
 // Input: key pressed, mouse co-ordinates <x,y>
 //====================================================
 void keyboard (unsigned char key, int x, int y) {
+    
+    if (key == KEY_ENTER) {
+        if (displayMenu) {
+            displayMenu = false;
+            return;
+        }
+        if (displayWin) {
+            displayWin = false;
+            level = Level(0, 0, WIDTH * 4, HEIGHT - 50.0f);
+            level.setLevelSprite(WIDTH, HEIGHT - 50.0f);
+            level.loadLevelFromFile("level1.txt");
+            
+            player = Player();
+            player.initializeSprite();
+            player.setPosition(player.getPosition().posX, level.getLevelHeight());
+            player.setPlayerScore(0);
+            player.setCoins(0);
+            
+            goomba = Goomba();
+            goomba.initializeSprite();
+            goomba.setState(eLEFT);
+            
+            goomba2 = Goomba();
+            goomba2.initializeSprite();
+            goomba2.setState(eLEFT);
+            goomba2.setPosition(250.0f, 259.0f);
+            
+            koopa = Koopa();
+            koopa.initializeSprite();
+            koopa.setState(eRIGHT);
+            
+            plant = Plant();
+            plant.initializeSprite();
+            
+            return;
+        }
+        if (displayGameOver) {
+            level = Level(0, 0, WIDTH * 4, HEIGHT - 50.0f);
+            level.setLevelSprite(WIDTH, HEIGHT - 50.0f);
+            level.loadLevelFromFile("level1.txt");
+            
+            player = Player();
+            player.initializeSprite();
+            player.setPosition(player.getPosition().posX, level.getLevelHeight());
+            player.setPlayerScore(0);
+            player.setCoins(0);
+
+            goomba = Goomba();
+            goomba.initializeSprite();
+            goomba.setState(eLEFT);
+            
+            goomba2 = Goomba();
+            goomba2.initializeSprite();
+            goomba2.setState(eLEFT);
+            goomba2.setPosition(250.0f, 259.0f);
+
+            koopa = Koopa();
+            koopa.initializeSprite();
+            koopa.setState(eRIGHT);
+            
+            plant = Plant();
+            plant.initializeSprite();
+            
+            displayGameOver = false;
+            return;
+        }
+    }
+    
+    if (key == KEY_ESC)
+    {
+        exit(0);
+    }
+    
+    if (displayMenu) {
+        return;
+    }
+    
     if (key =='w')
     {
         if (player.getState() == DEAD || player.getState() == RESPAWN) {
@@ -164,11 +302,6 @@ void keyboard (unsigned char key, int x, int y) {
             player.setIsJumping(true);
             player.setVelY(9.0f);
         }
-    }
-    
-    if (key == KEY_ESC)
-    {
-        exit(0);
     }
 }
 
@@ -218,7 +351,7 @@ void enable (void) {
 //====================================================
 void init (void) {
     enable(); // Enable OpenGL Parameters
-    level = Level(0, 0, WIDTH * 3, HEIGHT - 50.0f);
+    level = Level(0, 0, WIDTH * 4, HEIGHT - 50.0f);
     level.setLevelSprite(WIDTH, HEIGHT - 50.0f);
     level.loadLevelFromFile("level1.txt");
     
@@ -232,6 +365,11 @@ void init (void) {
     goomba.initializeSprite();
     goomba.setState(eLEFT);
     
+    goomba2 = Goomba();
+    goomba2.initializeSprite();
+    goomba2.setState(eLEFT);
+    goomba2.setPosition(250.0f, 259.0f);
+
     koopa = Koopa();
     koopa.initializeSprite();
     koopa.setState(eRIGHT);
@@ -242,14 +380,14 @@ void init (void) {
     soundEngine = SoundEngine();
     soundEngine.sound(0, 0, 0, "SuperMarioBros.wav", true);
     
-    glClearColor(0.2, 0.2, 0.6, 1.0); /* Mario Blue */
+    glClearColor(0.0, 0.0, 0.0, 1.0);
  	glViewport(0, 0, WIDTH, HEIGHT);
     
  	glMatrixMode(GL_PROJECTION);
  	glLoadIdentity();
     glOrtho(0, WIDTH, HEIGHT, 0, 0, 1);
     
-//    soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("SuperMarioBros.wav")->second]);
+    soundEngine.playSound(soundEngine.getSound()[soundEngine.getSoundMap().find("SuperMarioBros.wav")->second]);
 
 }
 

@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/player.cpp"
-            timestampString = "437186256.29829"
+            timestampString = "437989706.555806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba, Koopa *koopa)"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
+            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba, Goomba *goomba2, Koopa *koopa)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -154,12 +154,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/player.cpp"
-            timestampString = "437186728.118537"
+            timestampString = "437989706.555806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
-            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba, Koopa *koopa)"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba, Goomba *goomba2, Koopa *koopa)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -234,44 +234,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/player.cpp"
-            timestampString = "437186256.29829"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
-            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba, Koopa *koopa)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "source/player.cpp"
-            timestampString = "437186728.118537"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
-            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba, Koopa *koopa)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "source/player.cpp"
-            timestampString = "437186728.118537"
+            timestampString = "437989706.555806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "246"
             endingLineNumber = "246"
-            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba, Koopa *koopa)"
+            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba, Goomba *goomba2, Koopa *koopa)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/player.cpp"
+            timestampString = "437989706.555806"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
+            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba, Goomba *goomba2, Koopa *koopa)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -298,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/koopa.cpp"
-            timestampString = "437097612.443643"
+            timestampString = "437384113.939597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "405"
-            endingLineNumber = "405"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
             landmarkName = "Koopa::renderEnemy(void)"
             landmarkType = "5">
          </BreakpointContent>
@@ -330,12 +314,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/player.cpp"
-            timestampString = "437186728.118537"
+            timestampString = "437989706.555806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
-            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba, Koopa *koopa)"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
+            landmarkName = "Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba, Goomba *goomba2, Koopa *koopa)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -346,13 +330,109 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/koopa.cpp"
-            timestampString = "437176352.753551"
+            timestampString = "437384113.939597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "Koopa::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Player *player)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/main.mm"
+            timestampString = "437989706.555806"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "keyboard (unsigned char key, int x, int y)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/main.mm"
+            timestampString = "437989706.555806"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "keyboard (unsigned char key, int x, int y)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/main.mm"
+            timestampString = "437989706.555806"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "display (void)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/main.mm"
+            timestampString = "437989706.555806"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "update (int t)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/main.mm"
+            timestampString = "437989706.555806"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "update (int t)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/main.mm"
+            timestampString = "437989706.555806"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "update (int t)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

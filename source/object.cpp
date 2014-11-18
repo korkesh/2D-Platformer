@@ -106,7 +106,7 @@ void Object::renderObject(void) {
 
 }
 
-bool Object::collideObject(Position playerPosition, float playerWidth, float playerHeight) {
+bool Object::collideObject(Position playerPosition, float playerWidth, float playerHeight, int *playerScore, int *coins) {
     // Check if collision is possible
     if (collide == false) {
         return false;
@@ -151,6 +151,12 @@ bool Object::collideObject(Position playerPosition, float playerWidth, float pla
     if (lethal == true) {
         render = false;
         collide = false;
+        if (playerScore != NULL) {
+            *playerScore += 500;
+        }
+        if (coins != NULL) {
+            *coins += 1;
+        }
         return false;
     }
     

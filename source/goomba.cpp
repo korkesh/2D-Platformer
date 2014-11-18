@@ -135,24 +135,25 @@ void Goomba::updatePosition(float maxWidth, float maxHeight, Object* objects, in
     }
     
     
-    //    if (/*!isJumping &&*/ enemyPosition.posY + (height / 2) < maxHeight) {
-    //        enemyPosition.posY -= enemyPosition.velY;
-    //        enemyPosition.velY += gravity;
-    //
-    //        for (int i = 0 ; i < numObjects; i++) {
-    //            Object* currentObject = &objects[i];
-    //            if (currentObject->collideObject(enemyPosition, width / 2, height - 1.0f)) {
-    //                enemyPosition.posY = previousPosition.posY;
-    //                enemyPosition.velY = 0.0f;
-    //                break;
-    //            }
-    //        }
-    //    }
+        if (enemyPosition.posY + (height / 2) < maxHeight) {
+            enemyPosition.posY -= enemyPosition.velY;
+            enemyPosition.velY += gravity;
+    
+            for (int i = 0 ; i < numObjects; i++) {
+                Object* currentObject = &objects[i];
+                if (currentObject->collideObject(enemyPosition, width / 2, height - 1.0f)) {
+                    enemyPosition.posY = previousPosition.posY;
+                    enemyPosition.velY = 0.0f;
+                    break;
+                }
+            }
+        }
     
     //TODO: Magic Number Floor Boundry
     if (enemyPosition.posY + (height / 2) > maxHeight && enemyState != eDEAD) {
-        enemyPosition.posY = maxHeight;
+        enemyPosition.posY = maxHeight - 7.0f;
         isJumping = false;
+        enemyPosition.velY = 0.0f;
     }
     
     // Check Screen Boundries
@@ -162,12 +163,12 @@ void Goomba::updatePosition(float maxWidth, float maxHeight, Object* objects, in
     if (enemyPosition.posX - (width / 2) < -(width * 2)) {
         enemyState = eDEAD;
     }
-    if (enemyPosition.posY + (height / 2) > maxHeight) {
-        enemyState = eDEAD;
-    }
-    if (enemyPosition.posY - (height / 2) < 0) {
-        enemyState = eDEAD;
-    }
+//    if (enemyPosition.posY + (height / 2) > maxHeight) {
+//        enemyState = eDEAD;
+//    }
+//    if (enemyPosition.posY - (height / 2) < 0) {
+//        enemyState = eDEAD;
+//    }
     
 }
 

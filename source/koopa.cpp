@@ -244,53 +244,18 @@ void Koopa::updatePosition(float maxWidth, float maxHeight, Object* objects, int
         Object* currentObject = &objects[i];
         if (currentObject->collideObject(enemyPosition, width / 2, height - 1.0f)) {
             collide = true;
-            //            if (isJumping && enemyPosition.velY >= 0) {
-            //                if (currentObject->getFallThrough()) {
-            //                    continue;
-            //                }
-            //                /** Reposition Player directly Under Collided Object **/
-            //                enemyPosition = previousPosition;
-            //                enemyPosition.posY = currentObject->getObjectPosition().posY + (currentObject->getObjectHeight() / 2) + (height / 2);
-            //                enemyPosition.velY = 0;
-            //            } else if (playerPosition.velY < 0) {
-            //                if (currentObject->getFallThrough() &&
-            //                    ((enemyPosition.posY > (currentObject->getObjectPosition().posY + (currentObject->getObjectHeight() / 2))))) {
-            //                    enemyPosition.posX = previousPosition.posX;
-            //                    continue;
-            //                }
-            //                enemyPosition = previousPosition;
-            //                // playerPosition.velY = 0.0;
-            //                isJumping = false;
-            //            } else {
             enemyPosition = previousPosition;
             if (isTurning == false) {
                 isTurning = true;
                 elapsedTime = 0.0;
             }
-
-            //            }
             break;
         }
     }
     
-    if (enemyState != eDEAD && collideEnemy(player->getPosition(), player->getWidth(), player->getHeight()) && player->getVelY() != 8.0f ) {
+    if (enemyState != eDEAD && collideEnemy(player->getPosition(), player->getWidth(), player->getHeight()) && player->getVelY() != 8.0f && player->getVelY() <= 0.0f) {
         player->decreaseLives();
     }
-    
-    
-    //    if (/*!isJumping &&*/ enemyPosition.posY + (height / 2) < maxHeight) {
-    //        enemyPosition.posY -= enemyPosition.velY;
-    //        enemyPosition.velY += gravity;
-    //
-    //        for (int i = 0 ; i < numObjects; i++) {
-    //            Object* currentObject = &objects[i];
-    //            if (currentObject->collideObject(enemyPosition, width / 2, height - 1.0f)) {
-    //                enemyPosition.posY = previousPosition.posY;
-    //                enemyPosition.velY = 0.0f;
-    //                break;
-    //            }
-    //        }
-    //    }
     
     //TODO: Magic Number Floor Boundry
     if (enemyPosition.posY + (height / 2) > maxHeight && enemyState != eDEAD) {

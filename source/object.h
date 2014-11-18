@@ -54,7 +54,7 @@ public:
 
     // Functions
     void renderObject(void);
-    bool collideObject(Position playerPosition, float playerWidth, float playerHeight);
+    bool collideObject(Position playerPosition, float playerWidth, float playerHeight, int *playerScore = NULL, int *coins = NULL);
     
 };
 

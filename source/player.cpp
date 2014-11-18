@@ -27,6 +27,10 @@ Player::Player(void) {
     isCrouching = false;
     
     toggleRun = true;
+    
+    playerScore = 0;
+    
+    coins = 0;
 }
 
 void Player::initializeSprite() {
@@ -195,7 +199,7 @@ Player::~Player(void) {
     
 }
 
-void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba, Koopa *koopa) {
+void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, int numObjects, Goomba *goomba, Goomba *goomba2, Koopa *koopa) {
     
     Position previousPosition = playerPosition;
     
@@ -203,9 +207,15 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
         switch (playerState) {
             case LEFT:
                 playerPosition.posX -= playerPosition.velX;
+                if (playerPosition.posX > maxWidth - (WIDTH / 2)) {
+                    playerPosition = previousPosition;
+                }
                 break;
             case RIGHT:
                 playerPosition.posX += playerPosition.velX;
+                if (playerPosition.posX > maxWidth - (WIDTH / 2)) {
+                    playerPosition = previousPosition;
+                }
                 break;
             default:
                 break;
@@ -229,7 +239,7 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
     bool collide = false;
     for (int i = 0 ; i < numObjects; i++) {
         Object* currentObject = &objects[i];
-        if (currentObject->collideObject(playerPosition, width / 2, height - 1.0f)) {
+        if (currentObject->collideObject(playerPosition, width / 2, height - 1.0f, &playerScore, &coins)) {
             collide = true;
             if (isJumping && playerPosition.velY >= 0) {
                 if (currentObject->getFallThrough()) {
@@ -245,6 +255,7 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
                     playerPosition.posX = previousPosition.posX;
                     continue;
                 }
+                
                 playerPosition = previousPosition;
                // playerPosition.velY = 0.0;
                 isJumping = false;
@@ -258,10 +269,17 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
     // Test collision with Goomba
     if (goomba->collideEnemy(playerPosition, width, height) && playerPosition.velY < 0) {
         goomba->killGoomba();
+        playerScore += 100;
+    }
+    
+    if (goomba2->collideEnemy(playerPosition, width, height) && playerPosition.velY < 0) {
+        goomba2->killGoomba();
+        playerScore += 100;
     }
     
     if (koopa->collideEnemy(playerPosition, width, height) && playerPosition.velY < 0) {
         koopa->killKoopa(playerState);
+        playerScore += 100;
         isJumping = true;
         playerPosition.velY = 8.0f;
         return;
@@ -297,6 +315,7 @@ void Player::updatePosition(float maxWidth, float maxHeight, Object* objects, in
     }
     if (playerPosition.posY + (height / 2) > maxHeight) {
         playerPosition.posY = maxHeight - (height / 2);
+        playerPosition.velY = 0.0f;
     }
     if (playerPosition.posY - (height / 2) < 0) {
         playerPosition.posY = 0 + (height / 2);

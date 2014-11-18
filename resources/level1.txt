@@ -1,4 +1,4 @@
-NUMOBJECTS 98
+NUMOBJECTS 99
 
 ** Bushes **
 100 326 64 16 0 0 0 bush.png
@@ -6,13 +6,11 @@ NUMOBJECTS 98
 1275 326 64 16 0 0 0 bush.png
 
 ** ? blocks **
-220 275 16 16 1 0 0 qBlock.png
+220 275 16 16 1 0 0 block.png
 
 236 275 16 16 1 0 0 block.png
 
-252 275 16 16 1 0 0 qBlock.png
-
-236 225 16 16 1 0 0 qBlock.png
+252 275 16 16 1 0 0 block.png
 
 ** First Platform **
 500 327 6 15 0 0 0 groundEndLeft.png
@@ -107,11 +105,15 @@ NUMOBJECTS 98
 ** Bump **
 980 318 160 32 1 0 0 bump.png
 
+980 270 16 25 1 1 0 yoshi.png
+
 ** Pipe **
 1200 318 32 32 1 0 0 pipe.png
 
+** End **
+1600 254 257 160 0 0 0 end.png
+
+1600 280 16 25 1 1 0 yoshi.png
+
 ** Sign **
 1430 322 32 24 0 0 0 sign.png
-
-** End **
-1520 302 32 64 0 0 0 end.png
